@@ -1,0 +1,8 @@
+{
+  "title":"高等数学复习站",
+  "subtitle":"第一章 函数与极限 · 第二章 导数与微分",
+  "wrongNeed":3,
+  "quizSizes":[10,20,30],
+  "examCount":20,
+  "examMinutes":30
+}

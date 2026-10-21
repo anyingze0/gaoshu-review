@@ -1,0 +1,700 @@
+{
+  "deck": "ch1-3",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "自变量趋于无穷时的极限",
+      "tags": [
+        "函数极限",
+        "ε-X",
+        "无穷远"
+      ],
+      "summary": "当 $x\\to\\infty$ 时 $f(x)\\to A$，是指无论给定多么小的 $\\varepsilon>0$，只要 $|x|$ 足够大，就能使 $|f(x)-A|<\\varepsilon$。$x\\to+\\infty$ 与 $x\\to-\\infty$ 的定义类似，只限制一侧。",
+      "formulas": [
+        {
+          "label": "$x\\to\\infty$",
+          "tex": "\\lim_{x\\to\\infty}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists X>0,\\ |x|>X\\Rightarrow|f(x)-A|<\\varepsilon"
+        },
+        {
+          "label": "$x\\to+\\infty$",
+          "tex": "\\lim_{x\\to+\\infty}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists X>0,\\ x>X\\Rightarrow|f(x)-A|<\\varepsilon"
+        }
+      ],
+      "example": {
+        "stem": "用定义说明 $\\lim_{x\\to\\infty}\\frac1x=0$。",
+        "solution": "任给 $\\varepsilon>0$，要使 $\\left|\\frac1x\\right|<\\varepsilon$，只需 $|x|>\\frac1\\varepsilon$。取 $X=\\frac1\\varepsilon$，当 $|x|>X$ 时结论成立。"
+      },
+      "pitfalls": [
+        "$x\\to\\infty$ 表示 $|x|\\to+\\infty$，不是 $x\\to+\\infty$。",
+        "$\\lim_{x\\to\\infty}\\arctan x$ 不存在，因为两侧极限不同。"
+      ],
+      "page": 5
+    },
+    {
+      "id": "c02",
+      "title": "自变量趋于有限点时的极限",
+      "tags": [
+        "函数极限",
+        "ε-δ",
+        "去心邻域"
+      ],
+      "summary": "当 $x\\to x_0$ 时 $f(x)\\to A$，是指只要 $x$ 落在 $x_0$ 的去心 $\\delta$ 邻域内，就能使 $f(x)$ 落在 $A$ 的 $\\varepsilon$ 邻域内。$f$ 在 $x_0$ 处是否有定义不影响极限。",
+      "formulas": [
+        {
+          "label": "ε-δ 定义",
+          "tex": "\\lim_{x\\to x_0}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{x\\to2}\\frac{x^2-4}{x-2}$。",
+        "solution": "在 $x\\ne2$ 时约去公因子：$\\frac{x^2-4}{x-2}=x+2$，所以极限为 $2+2=4$。虽然 $x=2$ 处原式无定义，但极限仍存在。"
+      },
+      "pitfalls": [
+        "极限与函数在该点的取值无关。",
+        "$0<|x-x_0|$ 表示去掉 $x_0$ 点本身。"
+      ],
+      "page": 11
+    },
+    {
+      "id": "c03",
+      "title": "单侧极限与极限存在的充要条件",
+      "tags": [
+        "左极限",
+        "右极限",
+        "单侧极限"
+      ],
+      "summary": "左极限记作 $f(x_0^-)$，右极限记作 $f(x_0^+)$。函数在 $x_0$ 处极限存在的充要条件是左右极限都存在且相等。",
+      "formulas": [
+        {
+          "label": "左极限",
+          "tex": "f(x_0^-)=\\lim_{x\\to x_0^-}f(x)"
+        },
+        {
+          "label": "右极限",
+          "tex": "f(x_0^+)=\\lim_{x\\to x_0^+}f(x)"
+        },
+        {
+          "label": "充要条件",
+          "tex": "\\lim_{x\\to x_0}f(x)=A\\iff f(x_0^-)=f(x_0^+)=A"
+        }
+      ],
+      "example": {
+        "stem": "设 $f(x)=\\begin{cases}x+1,&x\\ge0\\\\x-1,&x<0\\end{cases}$，判断 $\\lim_{x\\to0}f(x)$ 是否存在。",
+        "solution": "$f(0^+)=\\lim_{x\\to0^+}(x+1)=1$，$f(0^-)=\\lim_{x\\to0^-}(x-1)=-1$。左右极限不相等，所以极限不存在。"
+      },
+      "pitfalls": [
+        "分段函数在分界点处必须分别求左右极限。",
+        "左右极限有一个不存在，原极限也不存在。"
+      ],
+      "page": 12
+    },
+    {
+      "id": "c04",
+      "title": "海涅定理（归结原则）",
+      "tags": [
+        "海涅定理",
+        "归结原则",
+        "极限不存在"
+      ],
+      "summary": "函数极限存在的充要条件是：对任意满足 $x_n\\to x_0$ 且 $x_n\\ne x_0$ 的数列，$f(x_n)$ 都收敛于同一个值。常用它来证明极限不存在：找两个数列，使 $f(x_n)$ 的极限不同。",
+      "formulas": [
+        {
+          "label": "归结原则",
+          "tex": "\\lim_{x\\to x_0}f(x)=A\\iff \\forall x_n\\to x_0\\ (x_n\\ne x_0),\\ f(x_n)\\to A"
+        }
+      ],
+      "example": {
+        "stem": "证明 $\\lim_{x\\to0}\\sin\\frac1x$ 不存在。",
+        "solution": "取 $x_n=\\frac1{n\\pi}\\to0$，则 $\\sin\\frac1{x_n}=\\sin n\\pi=0$；取 $y_n=\\frac1{\\frac\\pi2+2n\\pi}\\to0$，则 $\\sin\\frac1{y_n}=1$。两个数列对应的函数值极限不同，由海涅定理知原极限不存在。"
+      },
+      "pitfalls": [
+        "选取的数列必须满足 $x_n\\ne x_0$。",
+        "要证明不存在，只需找到两个极限不同的数列。"
+      ],
+      "page": 17
+    },
+    {
+      "id": "c05",
+      "title": "函数极限的性质",
+      "tags": [
+        "唯一性",
+        "局部有界",
+        "局部保号",
+        "四则运算"
+      ],
+      "summary": "函数极限具有唯一性、局部有界性、局部保号性、局部保序性和四则运算法则。局部性质都只在 $x_0$ 的某个去心邻域内成立。",
+      "formulas": [
+        {
+          "label": "局部保号",
+          "tex": "\\lim_{x\\to x_0}f(x)=A>0\\Rightarrow \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow f(x)>0"
+        },
+        {
+          "label": "四则运算",
+          "tex": "\\lim(f\\pm g)=A\\pm B,\\quad \\lim(fg)=AB,\\quad \\lim\\frac fg=\\frac AB\\ (B\\ne0)"
+        }
+      ],
+      "example": {
+        "stem": "若 $\\lim_{x\\to x_0}f(x)=2$，$\\lim_{x\\to x_0}g(x)=3$，求 $\\lim_{x\\to x_0}f(x)g(x)$。",
+        "solution": "由极限的乘法法则，$\\lim f(x)g(x)=2\\times3=6$。"
+      },
+      "pitfalls": [
+        "局部有界不等于在整个定义域上有界。",
+        "商的法则要求分母极限不为零。"
+      ],
+      "page": 20
+    },
+    {
+      "id": "c06",
+      "title": "两个重要极限与常用求法",
+      "tags": [
+        "重要极限",
+        "sinx/x",
+        "1的无穷次方",
+        "有理式极限"
+      ],
+      "summary": "第一重要极限 $\\lim_{x\\to0}\\frac{\\sin x}{x}=1$ 用于处理三角型未定式；第二重要极限 $\\lim_{x\\to\\infty}(1+\\frac1x)^x=e$ 用于处理 $1^\\infty$ 型。有理式在无穷远处的极限由最高次项决定。",
+      "formulas": [
+        {
+          "label": "第一重要极限",
+          "tex": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1"
+        },
+        {
+          "label": "第二重要极限",
+          "tex": "\\lim_{x\\to\\infty}\\left(1+\\frac1x\\right)^x=e"
+        },
+        {
+          "label": "1^∞ 型",
+          "tex": "\\lim u^v=e^{\\lim v(u-1)}\\quad(u\\to1,\\ v\\to\\infty)"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}$。",
+        "solution": "利用 $1-\\cos x=2\\sin^2\\frac x2$，得 $\\frac{1-\\cos x}{x^2}=\\frac{2\\sin^2(x/2)}{x^2}=\\frac12\\left(\\frac{\\sin(x/2)}{x/2}\\right)^2\\to\\frac12$。"
+      },
+      "pitfalls": [
+        "$1^\\infty$ 型不能直接代值，必须化为标准形式。",
+        "使用 $\\frac{\\sin x}{x}\\to1$ 时，$x$ 必须趋于 $0$。"
+      ],
+      "page": 39
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to\\infty}\\frac1x=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "0"
+        ]
+      ],
+      "explanation": "当 $|x|$ 无限增大时，$\\frac1x$ 无限接近于 $0$。",
+      "page": 5,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "函数极限 $\\lim_{x\\to x_0}f(x)=A$ 的 $\\varepsilon-\\delta$ 定义是（ ）",
+      "options": [
+        [
+          "A",
+          "$\\forall\\varepsilon>0,\\ \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon$"
+        ],
+        [
+          "B",
+          "$\\exists\\varepsilon>0,\\ \\forall\\delta>0,\\ |x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon$"
+        ],
+        [
+          "C",
+          "$\\forall\\delta>0,\\ \\exists\\varepsilon>0,\\ |x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon$"
+        ],
+        [
+          "D",
+          "$\\forall\\varepsilon>0,\\ \\exists\\delta>0,\\ |x-x_0|<\\delta\\Rightarrow f(x)=A$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "定义要求对任意 $\\varepsilon>0$，存在 $\\delta>0$，只要 $x$ 在去心 $\\delta$ 邻域内，就有 $|f(x)-A|<\\varepsilon$。",
+      "page": 11,
+      "kp": "c02"
+    },
+    {
+      "id": "q003",
+      "type": "multi",
+      "difficulty": 2,
+      "stem": "关于 $\\arctan x$ 在无穷远处的极限，下列说法正确的是（多选）",
+      "options": [
+        [
+          "A",
+          "$\\lim_{x\\to+\\infty}\\arctan x=\\frac{\\pi}{2}$"
+        ],
+        [
+          "B",
+          "$\\lim_{x\\to-\\infty}\\arctan x=-\\frac{\\pi}{2}$"
+        ],
+        [
+          "C",
+          "$\\lim_{x\\to\\infty}\\arctan x$ 存在"
+        ],
+        [
+          "D",
+          "$\\lim_{x\\to\\infty}\\arctan x=0$"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B"
+      ],
+      "explanation": "由反正切函数图像，$x\\to+\\infty$ 时函数值趋于 $\\frac{\\pi}{2}$，$x\\to-\\infty$ 时趋于 $-\\frac{\\pi}{2}$。两个单侧极限不相等，所以双侧极限 $\\lim_{x\\to\\infty}\\arctan x$ 不存在，C、D 错误。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q004",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "若函数 $f(x)$ 在 $x_0$ 处没有定义，则 $\\lim_{x\\to x_0}f(x)$ 一定不存在。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "极限只关心 $x_0$ 附近（不含 $x_0$）的取值。例如 $\\frac{x^2-1}{x-1}$ 在 $x=1$ 无定义，但 $x\\to1$ 时极限为 $2$。",
+      "page": 11,
+      "kp": "c02"
+    },
+    {
+      "id": "q005",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0^+}\\frac1x=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$+\\infty$"
+        ],
+        [
+          "C",
+          "$-\\infty$"
+        ],
+        [
+          "D",
+          "不存在但非无穷"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "当 $x>0$ 且趋于 $0$ 时，$\\frac1x$ 为正且无限增大，所以为 $+\\infty$。",
+      "page": 12,
+      "kp": "c03"
+    },
+    {
+      "id": "q006",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0^-}\\frac1x=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$+\\infty$"
+        ],
+        [
+          "C",
+          "$-\\infty$"
+        ],
+        [
+          "D",
+          "不存在但非无穷"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "当 $x<0$ 且趋于 $0$ 时，$\\frac1x$ 为负且绝对值无限增大，所以为 $-\\infty$。",
+      "page": 12,
+      "kp": "c03"
+    },
+    {
+      "id": "q007",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to x_0}f(x)$ 存在的充要条件是左极限与右极限都存在且相等。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "这是函数极限与单侧极限的基本关系。",
+      "page": 12,
+      "kp": "c03"
+    },
+    {
+      "id": "q008",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "要证明 $\\lim_{x\\to0}\\sin\\frac1x$ 不存在，最直接的理论依据是（ ）",
+      "options": [
+        [
+          "A",
+          "极限四则运算法则"
+        ],
+        [
+          "B",
+          "海涅定理"
+        ],
+        [
+          "C",
+          "单调有界原理"
+        ],
+        [
+          "D",
+          "夹逼定理"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "取两个趋于 $0$ 的数列，使对应的函数值分别趋于不同的值，由海涅定理即可判定极限不存在。",
+      "page": 18,
+      "kp": "c04"
+    },
+    {
+      "id": "q009",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to2}\\frac{x^2-4}{x-2}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "4"
+        ]
+      ],
+      "explanation": "约去公因子：$\\frac{(x-2)(x+2)}{x-2}=x+2\\to4$。",
+      "page": 11,
+      "kp": "c02"
+    },
+    {
+      "id": "q010",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "关于 $\\lim_{x\\to\\infty}\\frac{3x^2+2x}{x^2-1}$，下列说法正确的是（多选）",
+      "options": [
+        [
+          "A",
+          "极限为 $3$"
+        ],
+        [
+          "B",
+          "分子与分母同为二次多项式"
+        ],
+        [
+          "C",
+          "极限为 $0$"
+        ],
+        [
+          "D",
+          "可由最高次项系数之比得到极限"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "分子、分母最高次均为二次，同除以 $x^2$ 得 $\\frac{3+2/x}{1-1/x^2}\\to3$。因此 A、B、D 正确，C 错误。",
+      "page": 28,
+      "kp": "c01"
+    },
+    {
+      "id": "q011",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0}\\frac{\\sin x}{x}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "1"
+        ]
+      ],
+      "explanation": "这是第一重要极限。",
+      "page": 41,
+      "kp": "c06"
+    },
+    {
+      "id": "q012",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}(1+x)^{1/x}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$1$"
+        ],
+        [
+          "B",
+          "$e$"
+        ],
+        [
+          "C",
+          "$e^2$"
+        ],
+        [
+          "D",
+          "$0$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "令 $t=\\frac1x$，则 $x\\to0$ 时 $t\\to\\infty$，原式化为 $\\lim_{t\\to\\infty}(1+\\frac1t)^t=e$。",
+      "page": 46,
+      "kp": "c06"
+    },
+    {
+      "id": "q013",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to\\infty}\\left(1+\\frac1x\\right)^x=$（ ）",
+      "options": [
+        [
+          "A",
+          "$1$"
+        ],
+        [
+          "B",
+          "$e$"
+        ],
+        [
+          "C",
+          "$e^{-1}$"
+        ],
+        [
+          "D",
+          "$+\\infty$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "这是第二重要极限的标准形式。",
+      "page": 46,
+      "kp": "c06"
+    },
+    {
+      "id": "q014",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}\\frac{\\tan x}{x}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "1"
+        ]
+      ],
+      "explanation": "$\\frac{\\tan x}{x}=\\frac{\\sin x}{x}\\cdot\\frac1{\\cos x}\\to1\\cdot1=1$。",
+      "page": 42,
+      "kp": "c06"
+    },
+    {
+      "id": "q015",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}\\frac{1-\\cos x}{x^2}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$\\frac12$"
+        ],
+        [
+          "C",
+          "$1$"
+        ],
+        [
+          "D",
+          "$2$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "利用 $1-\\cos x=2\\sin^2\\frac x2$，得极限为 $\\frac12$。",
+      "page": 42,
+      "kp": "c06"
+    },
+    {
+      "id": "q016",
+      "type": "judge",
+      "difficulty": 2,
+      "stem": "若 $\\lim_{x\\to x_0}f(x)=A>0$，则存在 $\\delta>0$，当 $0<|x-x_0|<\\delta$ 时 $f(x)>0$。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "这是极限的局部保号性。取 $\\varepsilon=\\frac A2$，在相应去心邻域内 $f(x)>A-\\frac A2=\\frac A2>0$。",
+      "page": 21,
+      "kp": "c05"
+    },
+    {
+      "id": "q017",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "若 $\\lim_{x\\to x_0}f(x)=2$，$\\lim_{x\\to x_0}g(x)=3$，则 $\\lim_{x\\to x_0}f(x)g(x)=$（ ）",
+      "options": [
+        [
+          "A",
+          "$2$"
+        ],
+        [
+          "B",
+          "$3$"
+        ],
+        [
+          "C",
+          "$5$"
+        ],
+        [
+          "D",
+          "$6$"
+        ]
+      ],
+      "answer": [
+        "D"
+      ],
+      "explanation": "由极限乘法法则，$\\lim fg=(\\lim f)(\\lim g)=2\\times3=6$。",
+      "page": 23,
+      "kp": "c05"
+    },
+    {
+      "id": "q018",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}x\\sin\\frac1x=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$-1$"
+        ],
+        [
+          "D",
+          "不存在"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$0\\le\\left|x\\sin\\frac1x\\right|\\le|x|\\to0$，由夹逼定理得极限为 $0$。",
+      "page": 38,
+      "kp": "c06"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "函数极限",
+      "name": "ε-X 定义",
+      "tex": "\\lim_{x\\to\\infty}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists X>0,\\ |x|>X\\Rightarrow|f(x)-A|<\\varepsilon",
+      "note": "$x\\to+\\infty$ 时把 $|x|>X$ 改为 $x>X$",
+      "page": 5
+    },
+    {
+      "id": "f02",
+      "group": "函数极限",
+      "name": "ε-δ 定义",
+      "tex": "\\lim_{x\\to x_0}f(x)=A\\iff\\forall\\varepsilon>0,\\ \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow|f(x)-A|<\\varepsilon",
+      "note": "$x_0$ 处可以无定义",
+      "page": 11
+    },
+    {
+      "id": "f03",
+      "group": "函数极限",
+      "name": "左右极限",
+      "tex": "\\lim_{x\\to x_0}f(x)=A\\iff f(x_0^-)=f(x_0^+)=A",
+      "note": "判断分段函数在分界点处的极限",
+      "page": 12
+    },
+    {
+      "id": "f04",
+      "group": "函数极限",
+      "name": "第一重要极限",
+      "tex": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1",
+      "note": "$x$ 必须趋于 $0$",
+      "page": 41
+    },
+    {
+      "id": "f05",
+      "group": "函数极限",
+      "name": "第二重要极限",
+      "tex": "\\lim_{x\\to\\infty}\\left(1+\\frac1x\\right)^x=e",
+      "note": "处理 $1^\\infty$ 型",
+      "page": 46
+    },
+    {
+      "id": "f06",
+      "group": "函数极限",
+      "name": "1^∞ 型速算",
+      "tex": "\\lim u^v=e^{\\lim v(u-1)}\\quad(u\\to1,\\ v\\to\\infty)",
+      "note": "先确认是 $1^\\infty$ 型",
+      "page": 48
+    },
+    {
+      "id": "f07",
+      "group": "函数极限",
+      "name": "有理式无穷远极限",
+      "tex": "\\lim_{x\\to\\infty}\\frac{a_mx^m+\\cdots}{b_nx^n+\\cdots}=\\begin{cases}0,&m<n\\\\\\frac{a_m}{b_n},&m=n\\\\\\infty,&m>n\\end{cases}",
+      "note": "比较分子分母最高次数",
+      "page": 28
+    }
+  ]
+}

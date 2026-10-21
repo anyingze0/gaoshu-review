@@ -1,0 +1,737 @@
+{
+  "deck": "ch2-2",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "导数的四则运算",
+      "tags": [
+        "四则运算",
+        "乘积法则",
+        "商法则"
+      ],
+      "summary": "可导函数的和、差、积、商（分母不为零）仍可导。乘积法则是“前导后不导加前不导后导”，商法则是“分子求导乘分母减分子乘分母求导，再除以分母平方”。",
+      "formulas": [
+        {
+          "label": "和差",
+          "tex": "(u\\pm v)'=u'\\pm v'"
+        },
+        {
+          "label": "乘积",
+          "tex": "(uv)'=u'v+uv'"
+        },
+        {
+          "label": "商",
+          "tex": "\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}\\quad(v\\ne0)"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=x^3-2x^2+\\sin x$ 的导数。",
+        "solution": "$y'=(x^3)'-2(x^2)'+(\\sin x)'=3x^2-4x+\\cos x$。"
+      },
+      "pitfalls": [
+        "$(uv)'\\ne u'v'$。",
+        "商法则分子中的两项顺序不能颠倒。"
+      ],
+      "page": 3
+    },
+    {
+      "id": "c02",
+      "title": "反函数的导数",
+      "tags": [
+        "反函数",
+        "反函数求导",
+        "arcsin",
+        "arctan"
+      ],
+      "summary": "若 $x=\\varphi(y)$ 在区间内单调、可导且 $\\varphi'(y)\\ne0$，则其反函数 $y=f(x)$ 可导，且 $f'(x)=\\frac1{\\varphi'(y)}$。由此可推出反三角函数和对数函数的导数。",
+      "formulas": [
+        {
+          "label": "反函数求导",
+          "tex": "\\frac{dy}{dx}=\\frac1{\\frac{dx}{dy}}\\quad\\left(\\frac{dx}{dy}\\ne0\\right)"
+        },
+        {
+          "label": "反正弦",
+          "tex": "(\\arcsin x)'=\\frac1{\\sqrt{1-x^2}}"
+        },
+        {
+          "label": "反正切",
+          "tex": "(\\arctan x)'=\\frac1{1+x^2}"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\arctan x$ 的导数。",
+        "solution": "由 $x=\\tan y$，$\\frac{dx}{dy}=\\sec^2y=1+\\tan^2y=1+x^2$，所以 $y'=\\frac1{1+x^2}$。"
+      },
+      "pitfalls": [
+        "反函数求导的结果要换回原自变量 $x$。",
+        "条件 $\\varphi'(y)\\ne0$ 不能忽略。"
+      ],
+      "page": 7
+    },
+    {
+      "id": "c03",
+      "title": "复合函数的链式法则",
+      "tags": [
+        "复合函数",
+        "链式法则",
+        "求导"
+      ],
+      "summary": "若 $y=f(u)$ 在 $u$ 处可导，$u=g(x)$ 在 $x$ 处可导，则复合函数 $y=f(g(x))$ 可导，且 $\\frac{dy}{dx}=f'(u)g'(x)$。关键是分清复合层次，由外向内逐层求导。",
+      "formulas": [
+        {
+          "label": "链式法则",
+          "tex": "\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}"
+        },
+        {
+          "label": "多层复合",
+          "tex": "\\frac{dy}{dx}=f'(u)g'(v)h'(x)\\quad(y=f(g(h(x))))"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\sin 2x$ 的导数。",
+        "solution": "设 $u=2x$，则 $y=\\sin u$，$y'=\\cos u\\cdot2=2\\cos2x$。"
+      },
+      "pitfalls": [
+        "不要漏乘内层函数的导数。",
+        "复合层次越多，越要逐层写清楚。"
+      ],
+      "page": 11
+    },
+    {
+      "id": "c04",
+      "title": "基本初等函数导数公式表",
+      "tags": [
+        "导数公式",
+        "基本初等函数",
+        "公式表"
+      ],
+      "summary": "熟练掌握基本初等函数的导数公式，是进行四则运算、复合运算和隐函数求导的基础。特别要注意 $\\ln x$ 与 $\\log_a x$、$\\tan x$ 与 $\\cot x$ 的符号和系数差异。",
+      "formulas": [
+        {
+          "label": "幂函数",
+          "tex": "(x^\\mu)'=\\mu x^{\\mu-1}"
+        },
+        {
+          "label": "指数函数",
+          "tex": "(a^x)'=a^x\\ln a,\\quad(e^x)'=e^x"
+        },
+        {
+          "label": "对数函数",
+          "tex": "(\\log_a x)'=\\frac1{x\\ln a},\\quad(\\ln x)'=\\frac1x"
+        },
+        {
+          "label": "三角函数",
+          "tex": "(\\sin x)'=\\cos x,\\quad(\\cos x)'=-\\sin x"
+        },
+        {
+          "label": "正切余切",
+          "tex": "(\\tan x)'=\\sec^2x,\\quad(\\cot x)'=-\\csc^2x"
+        },
+        {
+          "label": "反三角",
+          "tex": "(\\arcsin x)'=\\frac1{\\sqrt{1-x^2}},\\quad(\\arctan x)'=\\frac1{1+x^2}"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\ln x+2^x$ 的导数。",
+        "solution": "$y'=\\frac1x+2^x\\ln2$。"
+      },
+      "pitfalls": [
+        "$(\\cos x)'=-\\sin x$，负号不能漏。",
+        "$(\\log_a x)'$ 的分母有 $\\ln a$。"
+      ],
+      "page": 17
+    },
+    {
+      "id": "c05",
+      "title": "初等函数求导综合",
+      "tags": [
+        "综合求导",
+        "四则运算",
+        "复合函数"
+      ],
+      "summary": "初等函数求导时，先观察结构：是四则运算还是复合运算；再按“由外向内、逐层求导”的顺序处理。必要时先化简（如对数性质、三角恒等式），可以显著减少计算量。",
+      "formulas": [
+        {
+          "label": "对数化简",
+          "tex": "\\ln\\frac{u}{v}=\\ln u-\\ln v"
+        },
+        {
+          "label": "三角恒等",
+          "tex": "\\sin2x=2\\sin x\\cos x"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\ln(x+\\sqrt{1+x^2})$ 的导数。",
+        "solution": "$y'=\\frac1{x+\\sqrt{1+x^2}}\\left(1+\\frac{x}{\\sqrt{1+x^2}}\\right)=\\frac1{\\sqrt{1+x^2}}$。"
+      },
+      "pitfalls": [
+        "先化简再求导，往往比直接硬算更简单。",
+        "复合函数求导后要检查是否还能化简。"
+      ],
+      "page": 18
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$y=x^3-2x^2+\\sin x$ 的导数是（ ）",
+      "options": [
+        [
+          "A",
+          "$3x^2-4x+\\cos x$"
+        ],
+        [
+          "B",
+          "$3x^2-2x+\\cos x$"
+        ],
+        [
+          "C",
+          "$3x^2-4x-\\cos x$"
+        ],
+        [
+          "D",
+          "$x^2-4x+\\cos x$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "逐项求导：$(x^3)'=3x^2$，$(-2x^2)'=-4x$，$(\\sin x)'=\\cos x$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(x^{100})'=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "100x^99",
+          "100x^{99}",
+          "100 x^99"
+        ]
+      ],
+      "explanation": "由幂函数求导公式 $(x^\\mu)'=\\mu x^{\\mu-1}$，得 $100x^{99}$。",
+      "page": 5,
+      "kp": "c01"
+    },
+    {
+      "id": "q003",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "下列求导公式正确的是（多选）",
+      "options": [
+        [
+          "A",
+          "$(uv)'=u'v+uv'$"
+        ],
+        [
+          "B",
+          "$\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}$"
+        ],
+        [
+          "C",
+          "$(uv)'=u'v'$"
+        ],
+        [
+          "D",
+          "$(u+v)'=u'+v'$"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "A 是乘积法则，B 是商法则（要求 $v\\ne0$），D 是和的导数法则；C 把乘积的导数误写成导数的乘积，错误。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q004",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\left(\\frac uv\\right)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac{u'v-uv'}{v^2}$"
+        ],
+        [
+          "B",
+          "$\\frac{u'v+uv'}{v^2}$"
+        ],
+        [
+          "C",
+          "$\\frac{u'v-uv'}{v}$"
+        ],
+        [
+          "D",
+          "$\\frac{u'}{v'}$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "商法则：分子求导乘分母，减去分子乘分母求导，再除以分母平方。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q005",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(e^x)'=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "e^x",
+          "e的x次方"
+        ]
+      ],
+      "explanation": "指数函数 $e^x$ 的导数仍是 $e^x$。",
+      "page": 17,
+      "kp": "c04"
+    },
+    {
+      "id": "q006",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(\\ln x)'=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "1/x",
+          "\\frac{1}{x}",
+          "x^{-1}"
+        ]
+      ],
+      "explanation": "自然对数函数的导数为 $\\frac1x$。",
+      "page": 17,
+      "kp": "c04"
+    },
+    {
+      "id": "q007",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$(a^x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$a^x$"
+        ],
+        [
+          "B",
+          "$a^x\\ln a$"
+        ],
+        [
+          "C",
+          "$x a^{x-1}$"
+        ],
+        [
+          "D",
+          "$\\frac{a^x}{\\ln a}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "指数函数 $a^x$ 的导数为 $a^x\\ln a$；当 $a=e$ 时化为 $e^x$。",
+      "page": 17,
+      "kp": "c04"
+    },
+    {
+      "id": "q008",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(\\sin x\\cos x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\cos2x$"
+        ],
+        [
+          "B",
+          "$-\\cos2x$"
+        ],
+        [
+          "C",
+          "$\\sin2x$"
+        ],
+        [
+          "D",
+          "$-\\sin2x$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$(\\sin x\\cos x)'=\\cos^2x-\\sin^2x=\\cos2x$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q009",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$(\\sin2x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\cos2x$"
+        ],
+        [
+          "B",
+          "$2\\cos2x$"
+        ],
+        [
+          "C",
+          "$-2\\cos2x$"
+        ],
+        [
+          "D",
+          "$2\\sin2x$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "由链式法则，$(\\sin2x)'=\\cos2x\\cdot(2x)'=2\\cos2x$。",
+      "page": 12,
+      "kp": "c03"
+    },
+    {
+      "id": "q010",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "$(e^{3x})'=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "3e^{3x}",
+          "3e^3x",
+          "3 e^{3x}",
+          "3e的3x次方"
+        ]
+      ],
+      "explanation": "由链式法则，$(e^{3x})'=e^{3x}\\cdot3=3e^{3x}$。",
+      "page": 13,
+      "kp": "c03"
+    },
+    {
+      "id": "q011",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(\\ln(1+x^2))'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac1{1+x^2}$"
+        ],
+        [
+          "B",
+          "$\\frac{2x}{1+x^2}$"
+        ],
+        [
+          "C",
+          "$\\frac{2x}{1+x}$"
+        ],
+        [
+          "D",
+          "$\\frac1{2x}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "外层 $\\ln u$ 的导数为 $\\frac1u$，内层 $u=1+x^2$ 的导数为 $2x$，所以结果为 $\\frac{2x}{1+x^2}$。",
+      "page": 13,
+      "kp": "c03"
+    },
+    {
+      "id": "q012",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$(\\arctan x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac1{1+x^2}$"
+        ],
+        [
+          "B",
+          "$\\frac1{\\sqrt{1-x^2}}$"
+        ],
+        [
+          "C",
+          "$\\frac1{1-x^2}$"
+        ],
+        [
+          "D",
+          "$-\\frac1{1+x^2}$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "反正切函数的导数为 $\\frac1{1+x^2}$。",
+      "page": 9,
+      "kp": "c02"
+    },
+    {
+      "id": "q013",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(\\arcsin x)'=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "1/√(1-x^2)",
+          "1/sqrt(1-x^2)",
+          "\\frac{1}{\\sqrt{1-x^2}}",
+          "1/根号(1-x²)"
+        ]
+      ],
+      "explanation": "反正弦函数的导数为 $\\frac1{\\sqrt{1-x^2}}$，定义域为 $(-1,1)$。",
+      "page": 8,
+      "kp": "c02"
+    },
+    {
+      "id": "q014",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(x\\ln x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\ln x$"
+        ],
+        [
+          "B",
+          "$\\ln x+1$"
+        ],
+        [
+          "C",
+          "$\\ln x-1$"
+        ],
+        [
+          "D",
+          "$\\frac1x$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "由乘积法则，$(x\\ln x)'=1\\cdot\\ln x+x\\cdot\\frac1x=\\ln x+1$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q015",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$(\\tan x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\sec^2x$"
+        ],
+        [
+          "B",
+          "$\\csc^2x$"
+        ],
+        [
+          "C",
+          "$-\\sec^2x$"
+        ],
+        [
+          "D",
+          "$\\sec x\\tan x$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$(\\tan x)'=\\sec^2x=\\frac1{\\cos^2x}$。",
+      "page": 17,
+      "kp": "c04"
+    },
+    {
+      "id": "q016",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "若 $x=\\varphi(y)$ 单调可导且 $\\varphi'(y)\\ne0$，则其反函数 $y=f(x)$ 的导数为（ ）",
+      "options": [
+        [
+          "A",
+          "$\\varphi'(y)$"
+        ],
+        [
+          "B",
+          "$\\frac1{\\varphi'(y)}$"
+        ],
+        [
+          "C",
+          "$-\\varphi'(y)$"
+        ],
+        [
+          "D",
+          "$\\frac1{\\varphi(x)}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "反函数求导公式为 $\\frac{dy}{dx}=\\frac1{dx/dy}=\\frac1{\\varphi'(y)}$。",
+      "page": 7,
+      "kp": "c02"
+    },
+    {
+      "id": "q017",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(\\sqrt{x^2+1})'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac{x}{\\sqrt{x^2+1}}$"
+        ],
+        [
+          "B",
+          "$\\frac{2x}{\\sqrt{x^2+1}}$"
+        ],
+        [
+          "C",
+          "$\\frac1{2\\sqrt{x^2+1}}$"
+        ],
+        [
+          "D",
+          "$\\sqrt{x^2+1}$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$(\\sqrt u)'=\\frac1{2\\sqrt u}$，$u=x^2+1$，$u'=2x$，所以结果为 $\\frac{x}{\\sqrt{x^2+1}}$。",
+      "page": 13,
+      "kp": "c03"
+    },
+    {
+      "id": "q018",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(\\sin^2x)'=$（ ）",
+      "options": [
+        [
+          "A",
+          "$2\\sin x$"
+        ],
+        [
+          "B",
+          "$\\sin2x$"
+        ],
+        [
+          "C",
+          "$2\\cos x$"
+        ],
+        [
+          "D",
+          "$\\cos2x$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$(\\sin^2x)'=2\\sin x\\cos x=\\sin2x$。",
+      "page": 14,
+      "kp": "c03"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "导数计算",
+      "name": "四则运算",
+      "tex": "(u\\pm v)'=u'\\pm v',\\quad(uv)'=u'v+uv',\\quad\\left(\\frac uv\\right)'=\\frac{u'v-uv'}{v^2}",
+      "note": "$v\\ne0$",
+      "page": 3
+    },
+    {
+      "id": "f02",
+      "group": "导数计算",
+      "name": "反函数求导",
+      "tex": "\\frac{dy}{dx}=\\frac1{dx/dy}",
+      "note": "$dx/dy\\ne0$",
+      "page": 7
+    },
+    {
+      "id": "f03",
+      "group": "导数计算",
+      "name": "链式法则",
+      "tex": "\\frac{dy}{dx}=\\frac{dy}{du}\\cdot\\frac{du}{dx}",
+      "note": "由外向内逐层求导",
+      "page": 11
+    },
+    {
+      "id": "f04",
+      "group": "导数计算",
+      "name": "幂函数",
+      "tex": "(x^\\mu)'=\\mu x^{\\mu-1}",
+      "note": "$\\mu$ 为常数",
+      "page": 17
+    },
+    {
+      "id": "f05",
+      "group": "导数计算",
+      "name": "指数函数",
+      "tex": "(a^x)'=a^x\\ln a,\\quad(e^x)'=e^x",
+      "note": "$a>0,\\ a\\ne1$",
+      "page": 17
+    },
+    {
+      "id": "f06",
+      "group": "导数计算",
+      "name": "对数函数",
+      "tex": "(\\log_a x)'=\\frac1{x\\ln a},\\quad(\\ln x)'=\\frac1x",
+      "note": "$x>0$",
+      "page": 17
+    },
+    {
+      "id": "f07",
+      "group": "导数计算",
+      "name": "三角函数",
+      "tex": "(\\sin x)'=\\cos x,\\quad(\\cos x)'=-\\sin x",
+      "note": "余弦的负号不要漏",
+      "page": 17
+    },
+    {
+      "id": "f08",
+      "group": "导数计算",
+      "name": "正切与余切",
+      "tex": "(\\tan x)'=\\sec^2x,\\quad(\\cot x)'=-\\csc^2x",
+      "note": "$\\sec x=\\frac1{\\cos x}$",
+      "page": 17
+    },
+    {
+      "id": "f09",
+      "group": "导数计算",
+      "name": "反三角函数",
+      "tex": "(\\arcsin x)'=\\frac1{\\sqrt{1-x^2}},\\quad(\\arctan x)'=\\frac1{1+x^2}",
+      "note": "$|x|<1$ 对反正弦",
+      "page": 8
+    },
+    {
+      "id": "f10",
+      "group": "导数计算",
+      "name": "常见复合",
+      "tex": "(\\sin2x)'=2\\cos2x,\\quad(e^{3x})'=3e^{3x},\\quad(\\ln(1+x^2))'=\\frac{2x}{1+x^2}",
+      "note": "链式法则的直接应用",
+      "page": 13
+    }
+  ]
+}

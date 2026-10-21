@@ -1,0 +1,10 @@
+.netlify/
+backups/*
+reports/*
+courseware/inbox/*
+courseware/unclassified/*
+
+!backups/.gitkeep
+!reports/.gitkeep
+!courseware/inbox/.gitkeep
+!courseware/unclassified/.gitkeep

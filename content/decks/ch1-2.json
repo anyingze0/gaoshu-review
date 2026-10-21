@@ -1,0 +1,673 @@
+{
+  "deck": "ch1-2",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "数列极限的 ε-N 定义",
+      "tags": [
+        "数列极限",
+        "ε-N",
+        "极限定义"
+      ],
+      "summary": "设 $\\{a_n\\}$ 为数列，$a$ 为常数。若对任意 $\\varepsilon>0$，总存在正整数 $N$，当 $n>N$ 时都有 $|a_n-a|<\\varepsilon$，则称数列收敛于 $a$，记作 $\\lim_{n\\to\\infty}a_n=a$。",
+      "formulas": [
+        {
+          "label": "ε-N 定义",
+          "tex": "\\lim_{n\\to\\infty}a_n=a\\iff \\forall\\varepsilon>0,\\ \\exists N\\in\\mathbb{N},\\ n>N\\Rightarrow |a_n-a|<\\varepsilon"
+        }
+      ],
+      "example": {
+        "stem": "用定义证明 $\\lim_{n\\to\\infty}\\frac1n=0$。",
+        "solution": "任给 $\\varepsilon>0$，要使 $\\left|\\frac1n-0\\right|=\\frac1n<\\varepsilon$，只需 $n>\\frac1\\varepsilon$。取 $N=\\left[\\frac1\\varepsilon\\right]+1$，则当 $n>N$ 时恒有 $\\left|\\frac1n\\right|<\\varepsilon$，故极限为 $0$。"
+      },
+      "pitfalls": [
+        "$N$ 依赖于 $\\varepsilon$，但不能依赖于 $n$。",
+        "改变数列的有限项不影响其极限。"
+      ],
+      "page": 5
+    },
+    {
+      "id": "c02",
+      "title": "用定义验证数列极限",
+      "tags": [
+        "ε-N",
+        "证明",
+        "放缩"
+      ],
+      "summary": "证明 $\\lim a_n=a$ 的固定套路：任给 $\\varepsilon>0$，计算 $|a_n-a|$，通过放缩把它化为只含 $n$ 的简单表达式，再解出 $n>N(\\varepsilon)$。",
+      "formulas": [
+        {
+          "label": "目标不等式",
+          "tex": "|a_n-a|<\\varepsilon\\quad(n>N)"
+        }
+      ],
+      "example": {
+        "stem": "证明 $\\lim_{n\\to\\infty}\\frac{2n+1}{n+1}=2$。",
+        "solution": "$\\left|\\frac{2n+1}{n+1}-2\\right|=\\left|\\frac{-1}{n+1}\\right|=\\frac1{n+1}<\\varepsilon$，只需 $n>\\frac1\\varepsilon-1$。取 $N=\\left[\\frac1\\varepsilon\\right]+1$ 即可。"
+      },
+      "pitfalls": [
+        "放缩必须保持不等式方向正确。",
+        "$N$ 取整数时通常写成取整加一，确保 $n>N$。"
+      ],
+      "page": 10
+    },
+    {
+      "id": "c03",
+      "title": "收敛数列的基本性质",
+      "tags": [
+        "唯一性",
+        "有界性",
+        "子列",
+        "保号性"
+      ],
+      "summary": "收敛数列的极限唯一；收敛数列必有界；若极限为正（负），则从某一项起数列保持为正（负）；收敛数列的任意子列都收敛于同一极限。",
+      "formulas": [
+        {
+          "label": "收敛必有界",
+          "tex": "a_n\\to a\\Rightarrow \\exists M>0,\\ |a_n|\\le M"
+        },
+        {
+          "label": "子列性质",
+          "tex": "a_n\\to a\\Rightarrow a_{n_k}\\to a"
+        }
+      ],
+      "example": {
+        "stem": "说明 $a_n=(-1)^n$ 为什么发散。",
+        "solution": "取子列 $a_{2n}=1\\to1$，$a_{2n-1}=-1\\to-1$。两个子列极限不同，而收敛数列的所有子列必须收敛于同一极限，所以原数列发散。",
+        "note": "有界但发散"
+      },
+      "pitfalls": [
+        "有界只是收敛的必要条件，不是充分条件。",
+        "只要找到两个极限不同的子列，就能判定原数列发散。"
+      ],
+      "page": 18
+    },
+    {
+      "id": "c04",
+      "title": "极限四则运算与夹逼定理",
+      "tags": [
+        "四则运算",
+        "夹逼定理",
+        "迫敛性"
+      ],
+      "summary": "若 $\\lim a_n=A$、$\\lim b_n=B$，则和、差、积、商的极限分别为 $A\\pm B$、$AB$、$A/B$（要求 $B\\ne0$）。夹逼定理常用于和式或含 $\\sin$、$(-1)^n$ 的数列。",
+      "formulas": [
+        {
+          "label": "四则运算",
+          "tex": "\\lim(a_n\\pm b_n)=A\\pm B,\\quad \\lim(a_nb_n)=AB,\\quad \\lim\\frac{a_n}{b_n}=\\frac AB\\ (B\\ne0)"
+        },
+        {
+          "label": "夹逼定理",
+          "tex": "b_n\\le a_n\\le c_n,\\quad b_n\\to L,\\ c_n\\to L\\Rightarrow a_n\\to L"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{n\\to\\infty}\\left(\\frac1{n^2}+\\frac2{n^2}+\\cdots+\\frac n{n^2}\\right)$。",
+        "solution": "原式 $=\\lim_{n\\to\\infty}\\frac{1+2+\\cdots+n}{n^2}=\\lim_{n\\to\\infty}\\frac{n(n+1)}{2n^2}=\\frac12$。"
+      },
+      "pitfalls": [
+        "商的法则要求分母极限不为零。",
+        "夹逼定理必须保证左右两边的极限相同。"
+      ],
+      "page": 25
+    },
+    {
+      "id": "c05",
+      "title": "重要极限与自然常数 e",
+      "tags": [
+        "重要极限",
+        "e",
+        "1的无穷次方"
+      ],
+      "summary": "数列 $\\left(1+\\frac1n\\right)^n$ 单调递增且有上界，因此收敛，其极限记为 $e$。由此可推广出一批 $1^\\infty$ 型极限。",
+      "formulas": [
+        {
+          "label": "e 的定义",
+          "tex": "\\lim_{n\\to\\infty}\\left(1+\\frac1n\\right)^n=e"
+        },
+        {
+          "label": "推广",
+          "tex": "\\lim_{n\\to\\infty}\\left(1+\\frac{k}{n}\\right)^n=e^k"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{n\\to\\infty}\\left(1-\\frac1n\\right)^n$。",
+        "solution": "$\\left(1-\\frac1n\\right)^n=\\left(1+\\frac{-1}{n}\\right)^n\\to e^{-1}=\\frac1e$。"
+      },
+      "pitfalls": [
+        "$1^\\infty$ 是未定式，不能直接把底数当成 $1$。",
+        "先化成标准形式 $(1+u_n)^{1/u_n}$，其中 $u_n\\to0$。"
+      ],
+      "page": 33
+    },
+    {
+      "id": "c06",
+      "title": "单调有界原理",
+      "tags": [
+        "单调有界",
+        "递推数列",
+        "存在性"
+      ],
+      "summary": "单调递增且有上界的数列必收敛；单调递减且有下界的数列必收敛。递推数列常先用归纳法证明单调和有界，再对递推式两边取极限。",
+      "formulas": [
+        {
+          "label": "单调有界原理",
+          "tex": "\\{a_n\\}\\text{ 单调递增且有上界}\\Rightarrow \\{a_n\\}\\text{ 收敛}"
+        }
+      ],
+      "example": {
+        "stem": "设 $x_1=\\sqrt2$，$x_{n+1}=\\sqrt{2+x_n}$，证明极限存在并求极限。",
+        "solution": "可归纳证明 $0<x_n<2$ 且 $x_{n+1}>x_n$，故极限存在。设极限为 $L$，对 $x_{n+1}=\\sqrt{2+x_n}$ 取极限得 $L=\\sqrt{2+L}$，即 $L^2-L-2=0$，结合 $L>0$ 得 $L=2$。"
+      },
+      "pitfalls": [
+        "必须先证明极限存在，才能对递推式两边取极限。",
+        "单调递增还需要有上界，二者缺一不可。"
+      ],
+      "page": 39
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{n\\to\\infty}\\frac1n=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "0"
+        ]
+      ],
+      "explanation": "对任意 $\\varepsilon>0$，取 $N=[1/\\varepsilon]+1$，当 $n>N$ 时 $1/n<\\varepsilon$，故极限为 $0$。",
+      "page": 5,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "数列极限 $\\lim_{n\\to\\infty}a_n=a$ 的 $\\varepsilon-N$ 定义中，量词顺序正确的是（ ）",
+      "options": [
+        [
+          "A",
+          "$\\forall\\varepsilon>0,\\ \\exists N,\\ \\forall n>N$"
+        ],
+        [
+          "B",
+          "$\\exists\\varepsilon>0,\\ \\forall N,\\ \\exists n>N$"
+        ],
+        [
+          "C",
+          "$\\forall N,\\ \\exists\\varepsilon>0,\\ \\forall n>N$"
+        ],
+        [
+          "D",
+          "$\\exists N,\\ \\forall\\varepsilon>0,\\ \\exists n>N$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "定义要求：对任意给定的 $\\varepsilon>0$，都能找到一个 $N$，使得所有 $n>N$ 都满足 $|a_n-a|<\\varepsilon$。",
+      "page": 5,
+      "kp": "c01"
+    },
+    {
+      "id": "q003",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "收敛数列一定有界。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "设 $a_n\\to a$，取 $\\varepsilon=1$，则从某一项起 $|a_n|<|a|+1$；再与前面有限项的最大值比较，即可得到界。",
+      "page": 18,
+      "kp": "c03"
+    },
+    {
+      "id": "q004",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "关于数列 $a_n=(-1)^n$，下列说法正确的是（多选）",
+      "options": [
+        [
+          "A",
+          "有界"
+        ],
+        [
+          "B",
+          "收敛"
+        ],
+        [
+          "C",
+          "发散"
+        ],
+        [
+          "D",
+          "存在收敛子列"
+        ]
+      ],
+      "answer": [
+        "A",
+        "C",
+        "D"
+      ],
+      "explanation": "$|a_n|=1$，故数列有界。偶数项子列趋于 $1$，奇数项子列趋于 $-1$，两个子列极限不同，所以原数列发散；但偶子列与奇子列本身都收敛，因此存在收敛子列。",
+      "page": 19,
+      "kp": "c03"
+    },
+    {
+      "id": "q005",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "若 $\\lim_{n\\to\\infty}a_n=2$，$\\lim_{n\\to\\infty}b_n=3$，则 $\\lim_{n\\to\\infty}(a_n+b_n)=$（ ）",
+      "options": [
+        [
+          "A",
+          "$2$"
+        ],
+        [
+          "B",
+          "$3$"
+        ],
+        [
+          "C",
+          "$5$"
+        ],
+        [
+          "D",
+          "不存在"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "由极限的四则运算法则，$\\lim(a_n+b_n)=\\lim a_n+\\lim b_n=2+3=5$。",
+      "page": 25,
+      "kp": "c04"
+    },
+    {
+      "id": "q006",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{n\\to\\infty}\\frac{3n^2+n}{n^2+2}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "3"
+        ]
+      ],
+      "explanation": "分子分母同除以 $n^2$，得 $\\frac{3+1/n}{1+2/n^2}\\to3$。",
+      "page": 26,
+      "kp": "c04"
+    },
+    {
+      "id": "q007",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\lim_{n\\to\\infty}\\left(1+\\frac1n\\right)^n=$（ ）",
+      "options": [
+        [
+          "A",
+          "$1$"
+        ],
+        [
+          "B",
+          "$e$"
+        ],
+        [
+          "C",
+          "$e^2$"
+        ],
+        [
+          "D",
+          "$+\\infty$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "这是自然常数 $e$ 的标准定义。",
+      "page": 33,
+      "kp": "c05"
+    },
+    {
+      "id": "q008",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "$\\lim_{n\\to\\infty}\\left(1+\\frac2n\\right)^n=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "e^2",
+          "e²",
+          "e的平方"
+        ]
+      ],
+      "explanation": "$\\left(1+\\frac2n\\right)^n=\\left[\\left(1+\\frac2n\\right)^{n/2}\\right]^2\\to e^2$。",
+      "page": 37,
+      "kp": "c05"
+    },
+    {
+      "id": "q009",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "有界数列一定收敛。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "反例：$a_n=(-1)^n$ 有界，但发散。有界只是收敛的必要条件。",
+      "page": 19,
+      "kp": "c03"
+    },
+    {
+      "id": "q010",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "若 $a_n\\to0$，$b_n\\to0$，则 $\\lim_{n\\to\\infty}\\frac{a_n}{b_n}$（ ）",
+      "options": [
+        [
+          "A",
+          "一定为 $0$"
+        ],
+        [
+          "B",
+          "一定为 $1$"
+        ],
+        [
+          "C",
+          "一定不存在"
+        ],
+        [
+          "D",
+          "可能不存在，需具体分析"
+        ]
+      ],
+      "answer": [
+        "D"
+      ],
+      "explanation": "这是 $\\frac00$ 型未定式。例如 $a_n=1/n$，$b_n=1/n$ 时极限为 $1$；$a_n=1/n^2$，$b_n=1/n$ 时极限为 $0$；$a_n=1/n$，$b_n=1/n^2$ 时趋于 $\\infty$。",
+      "page": 25,
+      "kp": "c04"
+    },
+    {
+      "id": "q011",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{n\\to\\infty}\\frac{\\sin n}{n}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$-1$"
+        ],
+        [
+          "D",
+          "不存在"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$0\\le\\left|\\frac{\\sin n}{n}\\right|\\le\\frac1n\\to0$，由夹逼定理得极限为 $0$。",
+      "page": 37,
+      "kp": "c04"
+    },
+    {
+      "id": "q012",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "若 $a_{2n}\\to1$，$a_{2n-1}\\to-1$，则数列 $\\{a_n\\}$（ ）",
+      "options": [
+        [
+          "A",
+          "收敛于 $0$"
+        ],
+        [
+          "B",
+          "收敛于 $1$"
+        ],
+        [
+          "C",
+          "发散"
+        ],
+        [
+          "D",
+          "无法判断"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "两个子列极限不同。若原数列收敛，则所有子列必须收敛于同一极限，矛盾，所以原数列发散。",
+      "page": 21,
+      "kp": "c03"
+    },
+    {
+      "id": "q013",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "$\\lim_{n\\to\\infty}(\\sqrt{n+1}-\\sqrt n)=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "0"
+        ]
+      ],
+      "explanation": "有理化得 $\\sqrt{n+1}-\\sqrt n=\\frac1{\\sqrt{n+1}+\\sqrt n}\\to0$。",
+      "page": 26,
+      "kp": "c04"
+    },
+    {
+      "id": "q014",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{n\\to\\infty}\\left(1-\\frac1n\\right)^n=$（ ）",
+      "options": [
+        [
+          "A",
+          "$e$"
+        ],
+        [
+          "B",
+          "$e^{-1}$"
+        ],
+        [
+          "C",
+          "$1$"
+        ],
+        [
+          "D",
+          "$-e$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$\\left(1-\\frac1n\\right)^n=\\left(1+\\frac{-1}{n}\\right)^n\\to e^{-1}$。",
+      "page": 37,
+      "kp": "c05"
+    },
+    {
+      "id": "q015",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "单调递增且有上界的数列一定收敛。",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "由单调有界原理，单调递增且有上界的数列必收敛；单调递减且有下界的数列也必收敛。命题正确。",
+      "page": 39,
+      "kp": "c06"
+    },
+    {
+      "id": "q016",
+      "type": "judge",
+      "difficulty": 2,
+      "stem": "单调递增数列一定收敛。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "还需要有上界。例如 $a_n=n$ 单调递增，但发散到 $+\\infty$。",
+      "page": 39,
+      "kp": "c06"
+    },
+    {
+      "id": "q017",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "数列 $x_n=1+\\frac12+\\frac13+\\cdots+\\frac1n$（ ）",
+      "options": [
+        [
+          "A",
+          "收敛于 $1$"
+        ],
+        [
+          "B",
+          "收敛于 $e$"
+        ],
+        [
+          "C",
+          "发散"
+        ],
+        [
+          "D",
+          "极限为 $0$"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "$x_n>\\ln(n+1)\\to+\\infty$，所以调和级数的部分和数列发散。",
+      "page": 30,
+      "kp": "c04"
+    },
+    {
+      "id": "q018",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "$\\lim_{n\\to\\infty}\\frac{n!}{n^n}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$e$"
+        ],
+        [
+          "D",
+          "$+\\infty$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$0<\\frac{n!}{n^n}=\\frac1n\\cdot\\frac2n\\cdots\\frac nn\\le\\frac1n\\to0$，由夹逼定理得极限为 $0$。",
+      "page": 34,
+      "kp": "c04"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "数列极限",
+      "name": "ε-N 定义",
+      "tex": "\\lim_{n\\to\\infty}a_n=a\\iff\\forall\\varepsilon>0,\\ \\exists N,\\ n>N\\Rightarrow|a_n-a|<\\varepsilon",
+      "note": "$N$ 可以依赖于 $\\varepsilon$",
+      "page": 5
+    },
+    {
+      "id": "f02",
+      "group": "数列极限",
+      "name": "收敛必有界",
+      "tex": "a_n\\to a\\Rightarrow \\exists M>0,\\ |a_n|\\le M",
+      "note": "有界不一定收敛",
+      "page": 18
+    },
+    {
+      "id": "f03",
+      "group": "数列极限",
+      "name": "夹逼定理",
+      "tex": "b_n\\le a_n\\le c_n,\\ b_n\\to L,\\ c_n\\to L\\Rightarrow a_n\\to L",
+      "note": "常用于和式、含三角函数或 $(-1)^n$ 的数列",
+      "page": 37
+    },
+    {
+      "id": "f04",
+      "group": "数列极限",
+      "name": "重要极限 e",
+      "tex": "\\lim_{n\\to\\infty}\\left(1+\\frac1n\\right)^n=e",
+      "note": "$1^\\infty$ 型极限的基础",
+      "page": 33
+    },
+    {
+      "id": "f05",
+      "group": "数列极限",
+      "name": "e 的推广",
+      "tex": "\\lim_{n\\to\\infty}\\left(1+\\frac{k}{n}\\right)^n=e^k",
+      "note": "$k$ 为常数",
+      "page": 37
+    },
+    {
+      "id": "f06",
+      "group": "数列极限",
+      "name": "单调有界原理",
+      "tex": "\\{a_n\\}\\text{ 单调递增且有上界}\\Rightarrow\\{a_n\\}\\text{ 收敛}",
+      "note": "递减有下界同理",
+      "page": 39
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "deck": "ch2-3",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "高阶导数的定义与记法",
+      "tags": [
+        "高阶导数",
+        "二阶导数",
+        "记法"
+      ],
+      "summary": "函数 $y=f(x)$ 的导数 $y'$ 仍可能是 $x$ 的函数。对 $y'$ 再求导，得到二阶导数 $y''$；依此类推可得 $n$ 阶导数。二阶导数常记为 $f''(x)$ 或 $\\frac{d^2y}{dx^2}$。",
+      "formulas": [
+        {
+          "label": "二阶导数",
+          "tex": "y''=(y')'=\\frac{d^2y}{dx^2}"
+        },
+        {
+          "label": "n 阶导数",
+          "tex": "y^{(n)}=(y^{(n-1)})'=\\frac{d^ny}{dx^n}"
+        }
+      ],
+      "example": {
+        "stem": "设 $y=x^3$，求 $y''$ 与 $y'''$。",
+        "solution": "$y'=3x^2$，$y''=6x$，$y'''=6$。继续求导得 $y^{(4)}=0$。"
+      },
+      "pitfalls": [
+        "$y''$ 表示对 $y$ 连续求导两次，不是 $y$ 的平方。",
+        "高阶导数存在的前提是低阶导数存在。"
+      ],
+      "page": 3
+    },
+    {
+      "id": "c02",
+      "title": "常见函数的 n 阶导数",
+      "tags": [
+        "n阶导数",
+        "公式",
+        "sin",
+        "e^x",
+        "ln"
+      ],
+      "summary": "幂函数、指数函数、正弦余弦函数、对数函数和分式函数都有固定的 $n$ 阶导数公式。记住这些公式，可以避免每次从头逐阶求导。",
+      "formulas": [
+        {
+          "label": "幂函数",
+          "tex": "(x^\\mu)^{(n)}=\\mu(\\mu-1)\\cdots(\\mu-n+1)x^{\\mu-n}"
+        },
+        {
+          "label": "指数函数",
+          "tex": "(e^{ax})^{(n)}=a^ne^{ax}"
+        },
+        {
+          "label": "正弦",
+          "tex": "(\\sin x)^{(n)}=\\sin\\left(x+\\frac{n\\pi}{2}\\right)"
+        },
+        {
+          "label": "余弦",
+          "tex": "(\\cos x)^{(n)}=\\cos\\left(x+\\frac{n\\pi}{2}\\right)"
+        },
+        {
+          "label": "对数",
+          "tex": "(\\ln x)^{(n)}=(-1)^{n-1}\\frac{(n-1)!}{x^n}"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\sin x$ 的 $n$ 阶导数。",
+        "solution": "$y'=\\cos x=\\sin(x+\\frac\\pi2)$，$y''=-\\sin x=\\sin(x+\\pi)$，归纳得 $y^{(n)}=\\sin(x+\\frac{n\\pi}{2})$。"
+      },
+      "pitfalls": [
+        "$(\\sin x)^{(n)}$ 的相位是 $x+\\frac{n\\pi}{2}$，不是 $x+n\\pi$。",
+        "对数函数的 $n$ 阶导数有符号因子 $(-1)^{n-1}$。"
+      ],
+      "page": 11
+    },
+    {
+      "id": "c03",
+      "title": "莱布尼茨公式",
+      "tags": [
+        "莱布尼茨公式",
+        "乘积",
+        "高阶导数"
+      ],
+      "summary": "求两个函数乘积的 $n$ 阶导数时，使用莱布尼茨公式，其结构与二项式展开类似。当其中一个因子是低次多项式时，只有前几项非零，计算会大大简化。",
+      "formulas": [
+        {
+          "label": "莱布尼茨公式",
+          "tex": "(uv)^{(n)}=\\sum_{k=0}^{n}\\binom{n}{k}u^{(k)}v^{(n-k)}"
+        }
+      ],
+      "example": {
+        "stem": "设 $y=x^2e^{2x}$，求 $y^{(20)}$ 中 $x^2$ 项的结构。",
+        "solution": "取 $u=x^2$，$v=e^{2x}$。由于 $u^{(k)}=0$（$k\\ge3$），莱布尼茨公式只剩 $k=0,1,2$ 三项：$y^{(20)}=x^2(e^{2x})^{(20)}+20\\cdot2x(e^{2x})^{(19)}+\\binom{20}{2}\\cdot2(e^{2x})^{(18)}$。"
+      },
+      "pitfalls": [
+        "二项式系数是 $\\binom nk$，不要漏掉。",
+        "选择求导后很快变为零的因子作为 $u$，可减少项数。"
+      ],
+      "page": 15
+    },
+    {
+      "id": "c04",
+      "title": "用间接法求高阶导数",
+      "tags": [
+        "间接法",
+        "拆项",
+        "三角恒等",
+        "高阶导数"
+      ],
+      "summary": "间接法利用已知的高阶导数公式，通过四则运算、变量代换、拆项或三角恒等变形，把复杂函数化为已知形式再求 $n$ 阶导数。",
+      "formulas": [
+        {
+          "label": "拆项",
+          "tex": "\\frac1{(x-a)(x-b)}=\\frac1{a-b}\\left(\\frac1{x-a}-\\frac1{x-b}\\right)"
+        },
+        {
+          "label": "降幂",
+          "tex": "\\sin^2x=\\frac{1-\\cos2x}{2},\\quad\\cos^2x=\\frac{1+\\cos2x}{2}"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=\\frac1{x^2-1}$ 的 $n$ 阶导数。",
+        "solution": "$y=\\frac12\\left(\\frac1{x-1}-\\frac1{x+1}\\right)$。利用 $\\left(\\frac1{x-a}\\right)^{(n)}=\\frac{(-1)^nn!}{(x-a)^{n+1}}$，得 $y^{(n)}=\\frac{(-1)^nn!}{2}\\left[\\frac1{(x-1)^{n+1}}-\\frac1{(x+1)^{n+1}}\\right]$。"
+      },
+      "pitfalls": [
+        "拆项时要检查系数是否正确。",
+        "三角函数的降幂公式可把高次幂化为低次三角函数的线性组合。"
+      ],
+      "page": 17
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "设 $y=x^3$，则 $y''=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "6x"
+        ]
+      ],
+      "explanation": "$y'=3x^2$，$y''=6x$。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "设 $y=x^n$（$n$ 为正整数），则 $y^{(n)}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$n!$"
+        ],
+        [
+          "B",
+          "$n!x$"
+        ],
+        [
+          "C",
+          "$nx^{n-1}$"
+        ],
+        [
+          "D",
+          "$0$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "每求导一次，指数减一，共求 $n$ 次，得到常数 $n!$。",
+      "page": 6,
+      "kp": "c02"
+    },
+    {
+      "id": "q003",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(e^x)^{(n)}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "e^x",
+          "e的x次方"
+        ]
+      ],
+      "explanation": "$e^x$ 任意阶导数都是 $e^x$。",
+      "page": 11,
+      "kp": "c02"
+    },
+    {
+      "id": "q004",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$(\\sin x)^{(n)}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\sin(x+n\\pi)$"
+        ],
+        [
+          "B",
+          "$\\sin\\left(x+\\frac{n\\pi}{2}\\right)$"
+        ],
+        [
+          "C",
+          "$\\cos\\left(x+\\frac{n\\pi}{2}\\right)$"
+        ],
+        [
+          "D",
+          "$(-1)^n\\sin x$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "每求导一次，正弦的相位增加 $\\frac\\pi2$，所以 $n$ 阶导数为 $\\sin(x+\\frac{n\\pi}{2})$。",
+      "page": 11,
+      "kp": "c02"
+    },
+    {
+      "id": "q005",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$(x^4)^{(4)}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "24"
+        ]
+      ],
+      "explanation": "由 $(x^n)^{(n)}=n!$，得 $4!=24$。",
+      "page": 6,
+      "kp": "c02"
+    },
+    {
+      "id": "q006",
+      "type": "multi",
+      "difficulty": 2,
+      "stem": "关于高阶导数，下列说法正确的是（多选）",
+      "options": [
+        [
+          "A",
+          "$(\\sin x)^{(n)}=\\sin\\left(x+\\frac{n\\pi}{2}\\right)$"
+        ],
+        [
+          "B",
+          "莱布尼茨公式 $(uv)^{(n)}=\\sum_{k=0}^n\\binom nk u^{(k)}v^{(n-k)}$"
+        ],
+        [
+          "C",
+          "$(uv)''=u''v+2u'v'+uv''$"
+        ],
+        [
+          "D",
+          "$(uv)^{(n)}=u^{(n)}v^{(n)}$"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B",
+        "C"
+      ],
+      "explanation": "A 是正弦函数高阶导数的周期规律；B 是莱布尼茨公式；C 是 $n=2$ 时的莱布尼茨展开。D 把乘积的高阶导数误写成高阶导数的乘积，错误。",
+      "page": 15,
+      "kp": "c03"
+    },
+    {
+      "id": "q007",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "设 $y=x^2e^{2x}$，用莱布尼茨公式求 $y^{(20)}$ 时，不为零的项最多有（ ）",
+      "options": [
+        [
+          "A",
+          "$1$ 项"
+        ],
+        [
+          "B",
+          "$2$ 项"
+        ],
+        [
+          "C",
+          "$3$ 项"
+        ],
+        [
+          "D",
+          "$21$ 项"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "$u=x^2$ 的三阶及以上导数都为零，所以只剩 $k=0,1,2$ 三项。",
+      "page": 16,
+      "kp": "c03"
+    },
+    {
+      "id": "q008",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "设 $y=\\ln x$，则 $y''=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "-1/x^2",
+          "-1/x²",
+          "-\\frac{1}{x^2}",
+          "-x^{-2}"
+        ]
+      ],
+      "explanation": "$y'=\\frac1x$，$y''=-\\frac1{x^2}$。",
+      "page": 13,
+      "kp": "c02"
+    },
+    {
+      "id": "q009",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "二阶导数 $y''$ 就是对一阶导数 $y'$ 再求一次导数。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "高阶导数就是逐阶求导，$y''=(y')'$。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q010",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "设 $y=\\sin x$，则 $y^{(4)}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\sin x$"
+        ],
+        [
+          "B",
+          "$\\cos x$"
+        ],
+        [
+          "C",
+          "$-\\sin x$"
+        ],
+        [
+          "D",
+          "$-\\cos x$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$y'=\\cos x$，$y''=-\\sin x$，$y'''=-\\cos x$，$y^{(4)}=\\sin x$，周期为 $4$。",
+      "page": 11,
+      "kp": "c02"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "高阶导数",
+      "name": "n 阶导数记法",
+      "tex": "y^{(n)}=\\frac{d^ny}{dx^n}",
+      "note": "逐阶求导",
+      "page": 3
+    },
+    {
+      "id": "f02",
+      "group": "高阶导数",
+      "name": "幂函数",
+      "tex": "(x^\\mu)^{(n)}=\\mu(\\mu-1)\\cdots(\\mu-n+1)x^{\\mu-n}",
+      "note": "$n$ 为整数",
+      "page": 6
+    },
+    {
+      "id": "f03",
+      "group": "高阶导数",
+      "name": "指数函数",
+      "tex": "(e^{ax})^{(n)}=a^ne^{ax}",
+      "note": "$a$ 为常数",
+      "page": 11
+    },
+    {
+      "id": "f04",
+      "group": "高阶导数",
+      "name": "正弦余弦",
+      "tex": "(\\sin x)^{(n)}=\\sin\\left(x+\\frac{n\\pi}{2}\\right),\\quad(\\cos x)^{(n)}=\\cos\\left(x+\\frac{n\\pi}{2}\\right)",
+      "note": "相位每次增加 $\\frac\\pi2$",
+      "page": 11
+    },
+    {
+      "id": "f05",
+      "group": "高阶导数",
+      "name": "对数函数",
+      "tex": "(\\ln x)^{(n)}=(-1)^{n-1}\\frac{(n-1)!}{x^n}",
+      "note": "$x>0$",
+      "page": 13
+    },
+    {
+      "id": "f06",
+      "group": "高阶导数",
+      "name": "莱布尼茨公式",
+      "tex": "(uv)^{(n)}=\\sum_{k=0}^n\\binom nk u^{(k)}v^{(n-k)}",
+      "note": "乘积的高阶导数",
+      "page": 15
+    },
+    {
+      "id": "f07",
+      "group": "高阶导数",
+      "name": "拆项",
+      "tex": "\\frac1{(x-a)(x-b)}=\\frac1{a-b}\\left(\\frac1{x-a}-\\frac1{x-b}\\right)",
+      "note": "间接法常用",
+      "page": 17
+    }
+  ]
+}

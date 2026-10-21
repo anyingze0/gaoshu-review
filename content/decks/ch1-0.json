@@ -1,0 +1,291 @@
+{
+  "deck": "ch1-0",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "第一章题型与方法总览",
+      "tags": [
+        "方法总结",
+        "极限",
+        "连续性",
+        "根的存在性"
+      ],
+      "summary": "第一章的核心题型包括：求定义域与函数表达式、判别初等性质、求数列与函数极限、无穷小比较、讨论连续性、判断间断点类型、确定参数、利用零点定理证明根的存在性。求极限时优先考虑四则运算、等价无穷小、两个重要极限、夹逼定理和单调有界原理。",
+      "formulas": [
+        {
+          "label": "等价替换",
+          "tex": "\\sin x\\sim x,\\quad 1-\\cos x\\sim\\frac{x^2}{2},\\quad \\ln(1+x)\\sim x"
+        },
+        {
+          "label": "重要极限",
+          "tex": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1,\\quad \\lim_{x\\to\\infty}\\left(1+\\frac1x\\right)^x=e"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{x\\to0}\\frac{1-\\cos2x}{x^2}$。",
+        "solution": "利用 $1-\\cos u\\sim\\frac{u^2}{2}$，令 $u=2x$，得 $1-\\cos2x\\sim\\frac{(2x)^2}{2}=2x^2$，所以极限为 $2$。"
+      },
+      "pitfalls": [
+        "先判断类型（$\\frac00$、$\\frac\\infty\\infty$、$1^\\infty$），再选方法。",
+        "等价无穷小替换只适用于乘除因子。"
+      ],
+      "page": 2
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}\\frac{1-\\cos2x}{x^2}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$2$"
+        ],
+        [
+          "D",
+          "$4$"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "$1-\\cos2x\\sim\\frac{(2x)^2}{2}=2x^2$，所以极限为 $2$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to+\\infty}(\\sqrt{x^2+x}-x)=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$\\frac12$"
+        ],
+        [
+          "C",
+          "$1$"
+        ],
+        [
+          "D",
+          "$+\\infty$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "有理化：$\\sqrt{x^2+x}-x=\\frac{x}{\\sqrt{x^2+x}+x}=\\frac1{\\sqrt{1+1/x}+1}\\to\\frac12$。",
+      "page": 9,
+      "kp": "c01"
+    },
+    {
+      "id": "q003",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0}\\frac{e^{2x}-1}{x}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "2"
+        ]
+      ],
+      "explanation": "$e^{2x}-1\\sim2x$，所以极限为 $2$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q004",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$f(x)=\\frac{x^2-1}{x-1}$ 在 $x=1$ 处的间断点类型是（ ）",
+      "options": [
+        [
+          "A",
+          "可去间断点"
+        ],
+        [
+          "B",
+          "跳跃间断点"
+        ],
+        [
+          "C",
+          "无穷间断点"
+        ],
+        [
+          "D",
+          "振荡间断点"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$\\lim_{x\\to1}f(x)=\\lim_{x\\to1}(x+1)=2$，但 $f(1)$ 无定义，所以是可去间断点。",
+      "page": 15,
+      "kp": "c01"
+    },
+    {
+      "id": "q005",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0}(1+x)^{1/x}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$e$"
+        ],
+        [
+          "D",
+          "$+\\infty$"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "这是第二重要极限的等价形式。",
+      "page": 5,
+      "kp": "c01"
+    },
+    {
+      "id": "q006",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "若 $f$ 在 $x_0$ 处连续，则 $\\lim_{x\\to x_0}f(x)=f(x_0)$。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "这正是函数在一点连续的定义。",
+      "page": 15,
+      "kp": "c01"
+    },
+    {
+      "id": "q007",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "方程 $x^5+x-1=0$ 的实根个数为（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$1$"
+        ],
+        [
+          "C",
+          "$2$"
+        ],
+        [
+          "D",
+          "$3$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$f'(x)=5x^4+1>0$，$f$ 严格递增，至多一个根；$f(0)=-1<0<f(1)=1$，至少一个根，所以恰有一个。",
+      "page": 16,
+      "kp": "c01"
+    },
+    {
+      "id": "q008",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}\\frac{\\sin3x}{\\tan2x}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "3/2",
+          "1.5",
+          "\\frac{3}{2}"
+        ]
+      ],
+      "explanation": "$\\sin3x\\sim3x$，$\\tan2x\\sim2x$，所以极限为 $\\frac{3x}{2x}=\\frac32$。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q009",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "求下列极限时，适合使用重要极限 $\\lim_{t\\to0}(1+t)^{1/t}=e$ 的是（多选）",
+      "options": [
+        [
+          "A",
+          "$\\lim_{n\\to\\infty}(1+1/n)^n$"
+        ],
+        [
+          "B",
+          "$\\lim_{x\\to0}(1+x)^{1/x}$"
+        ],
+        [
+          "C",
+          "$\\lim_{x\\to0}\\frac{\\sin x}{x}$"
+        ],
+        [
+          "D",
+          "$\\lim_{n\\to\\infty}(1-1/n)^n$"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "A、B 是重要极限 $e$ 的标准形式；D 可写成 $(1+(-1/n))^n$，极限为 $e^{-1}$，仍属于该重要极限的变形。C 使用的是 $\\lim_{x\\to0}\\frac{\\sin x}{x}=1$，不是 $e$ 型极限。",
+      "page": 3,
+      "kp": "c01"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "第一章方法",
+      "name": "常用等价无穷小",
+      "tex": "\\sin x\\sim x,\\quad 1-\\cos x\\sim\\frac{x^2}{2},\\quad \\ln(1+x)\\sim x,\\quad e^x-1\\sim x",
+      "note": "$x\\to0$",
+      "page": 6
+    },
+    {
+      "id": "f02",
+      "group": "第一章方法",
+      "name": "两个重要极限",
+      "tex": "\\lim_{x\\to0}\\frac{\\sin x}{x}=1,\\quad \\lim_{x\\to\\infty}\\left(1+\\frac1x\\right)^x=e",
+      "note": "分别处理三角型和 $1^\\infty$ 型",
+      "page": 5
+    }
+  ]
+}

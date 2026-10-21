@@ -1,0 +1,489 @@
+{
+  "deck": "ch2-4",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "隐函数的求导法",
+      "tags": [
+        "隐函数",
+        "隐函数求导",
+        "dy/dx"
+      ],
+      "summary": "若 $y$ 由方程 $F(x,y)=0$ 确定，求 $\\frac{dy}{dx}$ 时，把 $y$ 看作 $x$ 的函数，对方程两边关于 $x$ 求导，再解出 $y'$。注意对含 $y$ 的项使用链式法则。",
+      "formulas": [
+        {
+          "label": "隐函数",
+          "tex": "F(x,y)=0\\Rightarrow \\frac{d}{dx}F(x,y(x))=0"
+        },
+        {
+          "label": "圆方程",
+          "tex": "x^2+y^2=R^2\\Rightarrow y'=-\\frac xy"
+        }
+      ],
+      "example": {
+        "stem": "已知 $x^2+y^2=25$，求 $\\frac{dy}{dx}$，并求在点 $(3,4)$ 处的值。",
+        "solution": "两边对 $x$ 求导：$2x+2yy'=0$，所以 $y'=-\\frac xy$。在 $(3,4)$ 处 $y'=-\\frac34$。"
+      },
+      "pitfalls": [
+        "对 $y^2$ 求导得到 $2yy'$，不要漏掉 $y'$。",
+        "求某点导数时，先求导再代入坐标。"
+      ],
+      "page": 3
+    },
+    {
+      "id": "c02",
+      "title": "对数求导法",
+      "tags": [
+        "对数求导",
+        "幂指函数",
+        "连乘连除"
+      ],
+      "summary": "对幂指函数 $y=f(x)^{g(x)}$ 或含大量乘除、乘方的函数，先两边取对数，把幂变成乘积，再两边求导。最后要把 $y$ 乘回去。",
+      "formulas": [
+        {
+          "label": "幂指函数",
+          "tex": "y=f(x)^{g(x)}\\Rightarrow y'=y\\left(g'\\ln f+g\\frac{f'}{f}\\right)"
+        },
+        {
+          "label": "取对数",
+          "tex": "\\ln y=g(x)\\ln f(x)"
+        }
+      ],
+      "example": {
+        "stem": "求 $y=x^x$（$x>0$）的导数。",
+        "solution": "两边取对数：$\\ln y=x\\ln x$。求导得 $\\frac{y'}{y}=\\ln x+1$，所以 $y'=x^x(\\ln x+1)$。"
+      },
+      "pitfalls": [
+        "取对数要求函数值为正，必要时加绝对值。",
+        "最后不要忘记乘以原函数 $y$。"
+      ],
+      "page": 6
+    },
+    {
+      "id": "c03",
+      "title": "参数方程所确定函数的导数",
+      "tags": [
+        "参数方程",
+        "dy/dx",
+        "二阶导数"
+      ],
+      "summary": "若 $x=\\varphi(t)$、$y=\\psi(t)$，且 $\\varphi'(t)\\ne0$，则 $\\frac{dy}{dx}=\\frac{\\psi'(t)}{\\varphi'(t)}$。求二阶导数时，先对 $t$ 求导，再除以 $\\frac{dx}{dt}$。",
+      "formulas": [
+        {
+          "label": "一阶导数",
+          "tex": "\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{\\psi'(t)}{\\varphi'(t)}"
+        },
+        {
+          "label": "二阶导数",
+          "tex": "\\frac{d^2y}{dx^2}=\\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}"
+        }
+      ],
+      "example": {
+        "stem": "设 $x=t^2$，$y=t^3$，求 $\\frac{dy}{dx}$。",
+        "solution": "$\\frac{dx}{dt}=2t$，$\\frac{dy}{dt}=3t^2$，所以 $\\frac{dy}{dx}=\\frac{3t^2}{2t}=\\frac32t$（$t\\ne0$）。"
+      },
+      "pitfalls": [
+        "$\\frac{dy}{dx}$ 仍然是 $t$ 的函数，不是常数。",
+        "求二阶导数时不能直接对 $\\frac{dy}{dx}$ 再除以 $\\frac{dx}{dt}$ 之外的东西。"
+      ],
+      "page": 7
+    },
+    {
+      "id": "c04",
+      "title": "相关变化率",
+      "tags": [
+        "相关变化率",
+        "链式法则",
+        "实际问题"
+      ],
+      "summary": "当两个变量 $x(t)$、$y(t)$ 满足某个方程时，对时间 $t$ 求导可得到它们变化率之间的关系。已知一个变化率，就可以求另一个。",
+      "formulas": [
+        {
+          "label": "基本思路",
+          "tex": "F(x(t),y(t))=0\\Rightarrow \\frac{dF}{dt}=0"
+        },
+        {
+          "label": "圆面积",
+          "tex": "A=\\pi r^2\\Rightarrow \\frac{dA}{dt}=2\\pi r\\frac{dr}{dt}"
+        }
+      ],
+      "example": {
+        "stem": "一个气球半径 $r$ 以 $2\\,\\mathrm{cm/s}$ 的速度增大，求半径 $r=5\\,\\mathrm{cm}$ 时体积的增加速率。",
+        "solution": "$V=\\frac43\\pi r^3$，$\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}=4\\pi\\cdot25\\cdot2=200\\pi\\,\\mathrm{cm^3/s}$。"
+      },
+      "pitfalls": [
+        "所有变量都应对同一时间 $t$ 求导。",
+        "代入数值要在求导之后，避免把变量当常数。"
+      ],
+      "page": 10
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "由 $x^2+y^2=1$ 确定的隐函数 $y=y(x)$，其导数 $\\frac{dy}{dx}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac xy$"
+        ],
+        [
+          "B",
+          "$-\\frac xy$"
+        ],
+        [
+          "C",
+          "$-\\frac yx$"
+        ],
+        [
+          "D",
+          "$\\frac yx$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "两边对 $x$ 求导：$2x+2yy'=0$，所以 $y'=-\\frac xy$。",
+      "page": 4,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "已知 $x^2+y^2=25$，则在点 $(3,4)$ 处 $\\frac{dy}{dx}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "-3/4",
+          "-0.75",
+          "-\\frac{3}{4}"
+        ]
+      ],
+      "explanation": "$y'=-\\frac xy$，代入 $(3,4)$ 得 $-\\frac34$。",
+      "page": 4,
+      "kp": "c01"
+    },
+    {
+      "id": "q003",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$y=x^x$（$x>0$）的导数是（ ）",
+      "options": [
+        [
+          "A",
+          "$x^x$"
+        ],
+        [
+          "B",
+          "$x^x\\ln x$"
+        ],
+        [
+          "C",
+          "$x^x(\\ln x+1)$"
+        ],
+        [
+          "D",
+          "$x\\cdot x^{x-1}$"
+        ]
+      ],
+      "answer": [
+        "C"
+      ],
+      "explanation": "取对数得 $\\ln y=x\\ln x$，求导得 $\\frac{y'}{y}=\\ln x+1$，所以 $y'=x^x(\\ln x+1)$。",
+      "page": 6,
+      "kp": "c02"
+    },
+    {
+      "id": "q004",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "下列函数适合用对数求导法的是（多选）",
+      "options": [
+        [
+          "A",
+          "$y=(x+1)^x$（$x>-1$）"
+        ],
+        [
+          "B",
+          "$y=x^x$（$x>0$）"
+        ],
+        [
+          "C",
+          "$y=x^2+1$"
+        ],
+        [
+          "D",
+          "$y=(\\sin x)^x$（$\\sin x>0$）"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B",
+        "D"
+      ],
+      "explanation": "对数求导法适合幂指函数或含多个因子乘除、乘方的函数。A、B、D 都是底数和指数含自变量的幂指结构，取对数可把指数化为乘积；C 是普通多项式，直接求导更简单。",
+      "page": 6,
+      "kp": "c02"
+    },
+    {
+      "id": "q005",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "设 $x=t^2$，$y=t^3$，则 $\\frac{dy}{dx}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "3t/2",
+          "1.5t",
+          "\\frac{3}{2}t",
+          "3/2 t"
+        ]
+      ],
+      "explanation": "$\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}=\\frac{3t^2}{2t}=\\frac32t$。",
+      "page": 7,
+      "kp": "c03"
+    },
+    {
+      "id": "q006",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "设 $x=\\cos t$，$y=\\sin t$，则 $\\frac{dy}{dx}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\tan t$"
+        ],
+        [
+          "B",
+          "$-\\cot t$"
+        ],
+        [
+          "C",
+          "$\\cot t$"
+        ],
+        [
+          "D",
+          "$-\\tan t$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$\\frac{dy}{dx}=\\frac{\\cos t}{-\\sin t}=-\\cot t$。",
+      "page": 8,
+      "kp": "c03"
+    },
+    {
+      "id": "q007",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "设 $x=a(t-\\sin t)$，$y=a(1-\\cos t)$，则 $\\frac{dy}{dx}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$\\tan\\frac t2$"
+        ],
+        [
+          "B",
+          "$\\cot\\frac t2$"
+        ],
+        [
+          "C",
+          "$\\sin t$"
+        ],
+        [
+          "D",
+          "$\\frac{1-\\cos t}{\\sin t}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$\\frac{dx}{dt}=a(1-\\cos t)$，$\\frac{dy}{dt}=a\\sin t$，所以 $\\frac{dy}{dx}=\\frac{\\sin t}{1-\\cos t}=\\cot\\frac t2$。",
+      "page": 9,
+      "kp": "c03"
+    },
+    {
+      "id": "q008",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "一梯子长 $5\\,\\mathrm{m}$，下端离墙 $3\\,\\mathrm{m}$ 时以 $2\\,\\mathrm{m/s}$ 的速度向外滑动。此时上端下滑的速率为（ ）",
+      "options": [
+        [
+          "A",
+          "$1\\,\\mathrm{m/s}$"
+        ],
+        [
+          "B",
+          "$\\frac32\\,\\mathrm{m/s}$"
+        ],
+        [
+          "C",
+          "$2\\,\\mathrm{m/s}$"
+        ],
+        [
+          "D",
+          "$\\frac34\\,\\mathrm{m/s}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "设下端距墙 $x$，上端高 $y$，$x^2+y^2=25$。求导得 $2x x'+2y y'=0$，所以 $y'=-\\frac xy x'=-\\frac34\\times2=-\\frac32$，下滑速率为 $\\frac32\\,\\mathrm{m/s}$。",
+      "page": 11,
+      "kp": "c04"
+    },
+    {
+      "id": "q009",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "隐函数求导时，应把 $y$ 看作 $x$ 的函数，对含 $y$ 的项使用链式法则。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "这是隐函数求导的核心思想。例如 $(y^2)'=2yy'$。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q010",
+      "type": "fill",
+      "difficulty": 3,
+      "stem": "设 $y=(\\sin x)^x$，则 $\\frac{y'}{y}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "ln(sin x)+x cot x",
+          "\\ln(\\sin x)+x\\cot x",
+          "lnsinx+xcotx"
+        ]
+      ],
+      "explanation": "取对数得 $\\ln y=x\\ln(\\sin x)$，求导得 $\\frac{y'}{y}=\\ln(\\sin x)+x\\cdot\\frac{\\cos x}{\\sin x}=\\ln(\\sin x)+x\\cot x$。",
+      "page": 6,
+      "kp": "c02"
+    },
+    {
+      "id": "q011",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "设 $x=e^t$，$y=t^2$，则 $\\frac{dy}{dx}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$2te^{-t}$"
+        ],
+        [
+          "B",
+          "$2t e^t$"
+        ],
+        [
+          "C",
+          "$\\frac{2t}{e^t}$"
+        ],
+        [
+          "D",
+          "$2e^t$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$\\frac{dy}{dx}=\\frac{2t}{e^t}=2te^{-t}$。",
+      "page": 8,
+      "kp": "c03"
+    },
+    {
+      "id": "q012",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "气球体积以 $100\\,\\mathrm{cm^3/s}$ 的速率增大，当半径 $r=5\\,\\mathrm{cm}$ 时，半径的增长速率为（ ）",
+      "options": [
+        [
+          "A",
+          "$\\frac1\\pi\\,\\mathrm{cm/s}$"
+        ],
+        [
+          "B",
+          "$\\frac{100}{\\pi}\\,\\mathrm{cm/s}$"
+        ],
+        [
+          "C",
+          "$4\\pi\\,\\mathrm{cm/s}$"
+        ],
+        [
+          "D",
+          "$\\frac1{4\\pi}\\,\\mathrm{cm/s}$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$V=\\frac43\\pi r^3$，$\\frac{dV}{dt}=4\\pi r^2\\frac{dr}{dt}$。代入 $r=5$、$\\frac{dV}{dt}=100$，得 $\\frac{dr}{dt}=\\frac{100}{100\\pi}=\\frac1\\pi$。",
+      "page": 11,
+      "kp": "c04"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "特殊求导",
+      "name": "隐函数求导",
+      "tex": "F(x,y)=0\\Rightarrow \\frac{d}{dx}F(x,y(x))=0",
+      "note": "含 $y$ 的项用链式法则",
+      "page": 3
+    },
+    {
+      "id": "f02",
+      "group": "特殊求导",
+      "name": "圆方程",
+      "tex": "x^2+y^2=R^2\\Rightarrow y'=-\\frac xy",
+      "note": "隐函数求导的典型例子",
+      "page": 4
+    },
+    {
+      "id": "f03",
+      "group": "特殊求导",
+      "name": "幂指函数",
+      "tex": "y=f(x)^{g(x)}\\Rightarrow y'=y\\left(g'\\ln f+g\\frac{f'}{f}\\right)",
+      "note": "先取对数",
+      "page": 6
+    },
+    {
+      "id": "f04",
+      "group": "特殊求导",
+      "name": "参数方程一阶导",
+      "tex": "\\frac{dy}{dx}=\\frac{dy/dt}{dx/dt}",
+      "note": "$dx/dt\\ne0$",
+      "page": 7
+    },
+    {
+      "id": "f05",
+      "group": "特殊求导",
+      "name": "参数方程二阶导",
+      "tex": "\\frac{d^2y}{dx^2}=\\frac{\\frac{d}{dt}\\left(\\frac{dy}{dx}\\right)}{\\frac{dx}{dt}}",
+      "note": "先对 $t$ 求导再除以 $dx/dt$",
+      "page": 8
+    },
+    {
+      "id": "f06",
+      "group": "特殊求导",
+      "name": "相关变化率",
+      "tex": "F(x(t),y(t))=0\\Rightarrow\\frac{dF}{dt}=0",
+      "note": "所有变量对同一时间 $t$ 求导",
+      "page": 10
+    }
+  ]
+}

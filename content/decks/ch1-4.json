@@ -1,0 +1,622 @@
+{
+  "deck": "ch1-4",
+  "cards": [
+    {
+      "id": "c01",
+      "title": "无穷小的定义与运算性质",
+      "tags": [
+        "无穷小",
+        "极限为零",
+        "运算性质"
+      ],
+      "summary": "在某一极限过程中，极限为零的变量称为该过程中的无穷小。有限个无穷小的和、积仍是无穷小；有界函数与无穷小的乘积仍是无穷小。",
+      "formulas": [
+        {
+          "label": "无穷小",
+          "tex": "\\lim_{x\\to x_0}\\alpha(x)=0\\iff \\alpha(x)\\text{ 是 }x\\to x_0\\text{ 时的无穷小}"
+        },
+        {
+          "label": "有界乘无穷小",
+          "tex": "|f(x)|\\le M,\\ \\alpha(x)\\to0\\Rightarrow f(x)\\alpha(x)\\to0"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{x\\to0}x\\sin\\frac1x$。",
+        "solution": "$\\left|\\sin\\frac1x\\right|\\le1$ 有界，$x\\to0$ 是无穷小，所以乘积 $x\\sin\\frac1x\\to0$。"
+      },
+      "pitfalls": [
+        "无穷小是变量，不是很小的常数。",
+        "无穷多个无穷小的和未必是无穷小。"
+      ],
+      "page": 3
+    },
+    {
+      "id": "c02",
+      "title": "无穷小的阶",
+      "tags": [
+        "高阶无穷小",
+        "同阶无穷小",
+        "等价无穷小"
+      ],
+      "summary": "设 $\\alpha,\\beta$ 是同一过程中的无穷小且 $\\beta\\ne0$。若 $\\alpha/\\beta\\to0$，称 $\\alpha$ 是 $\\beta$ 的高阶无穷小；若比值趋于非零常数，称同阶；若比值趋于 $1$，称等价。",
+      "formulas": [
+        {
+          "label": "高阶",
+          "tex": "\\alpha=o(\\beta)\\iff \\lim\\frac{\\alpha}{\\beta}=0"
+        },
+        {
+          "label": "同阶",
+          "tex": "\\lim\\frac{\\alpha}{\\beta}=c\\ne0"
+        },
+        {
+          "label": "等价",
+          "tex": "\\alpha\\sim\\beta\\iff \\lim\\frac{\\alpha}{\\beta}=1"
+        }
+      ],
+      "example": {
+        "stem": "当 $x\\to0$ 时，比较 $x^2$ 与 $x$ 的阶。",
+        "solution": "$\\lim_{x\\to0}\\frac{x^2}{x}=\\lim_{x\\to0}x=0$，所以 $x^2$ 是 $x$ 的高阶无穷小，记作 $x^2=o(x)$。"
+      },
+      "pitfalls": [
+        "比较阶时必须说明同一个极限过程。",
+        "高阶、低阶是相对概念。"
+      ],
+      "page": 12
+    },
+    {
+      "id": "c03",
+      "title": "常用等价无穷小与替换原则",
+      "tags": [
+        "等价无穷小",
+        "替换",
+        "极限计算"
+      ],
+      "summary": "当 $x\\to0$ 时，有一组常用等价无穷小。等价替换通常只能用于乘除运算中的因子；在加减运算中直接替换可能改变高阶项，导致错误。",
+      "formulas": [
+        {
+          "label": "基本替换",
+          "tex": "\\sin x\\sim x,\\quad \\tan x\\sim x,\\quad \\arcsin x\\sim x,\\quad \\arctan x\\sim x"
+        },
+        {
+          "label": "其他常用",
+          "tex": "1-\\cos x\\sim\\frac{x^2}{2},\\quad \\ln(1+x)\\sim x,\\quad e^x-1\\sim x"
+        },
+        {
+          "label": "幂型",
+          "tex": "(1+x)^a-1\\sim ax,\\quad a^x-1\\sim x\\ln a"
+        }
+      ],
+      "example": {
+        "stem": "求 $\\lim_{x\\to0}\\frac{\\ln(1+2x)}{\\sin3x}$。",
+        "solution": "分子 $\\ln(1+2x)\\sim2x$，分母 $\\sin3x\\sim3x$，所以原极限为 $\\frac{2x}{3x}=\\frac23$。"
+      },
+      "pitfalls": [
+        "加减法中不能随意替换，例如 $\\tan x-\\sin x$ 不能换成 $x-x=0$。",
+        "替换后要检查是否仍为未定式。"
+      ],
+      "page": 14
+    },
+    {
+      "id": "c04",
+      "title": "无穷大及其与无穷小的关系",
+      "tags": [
+        "无穷大",
+        "无穷小",
+        "倒数关系"
+      ],
+      "summary": "在某一极限过程中，若 $|f(x)|$ 无限增大，则称 $f(x)$ 为该过程中的无穷大。在同一过程中，无穷大的倒数是无穷小；恒不为零的无穷小的倒数是无穷大。",
+      "formulas": [
+        {
+          "label": "无穷大",
+          "tex": "\\lim_{x\\to x_0}f(x)=\\infty\\iff \\forall M>0,\\ \\exists\\delta>0,\\ 0<|x-x_0|<\\delta\\Rightarrow|f(x)|>M"
+        },
+        {
+          "label": "倒数关系",
+          "tex": "f(x)\\to\\infty\\iff \\frac1{f(x)}\\to0"
+        }
+      ],
+      "example": {
+        "stem": "说明 $\\lim_{x\\to0}\\frac1{x^2}=+\\infty$，并写出相应的无穷小。",
+        "solution": "当 $x\\to0$ 时 $x^2\\to0^+$，所以 $\\frac1{x^2}\\to+\\infty$；其倒数 $x^2$ 是无穷小。"
+      },
+      "pitfalls": [
+        "无界函数不一定是无穷大，例如 $x\\sin x$ 在 $x\\to\\infty$ 时无界但不趋于无穷大。",
+        "无穷大是变量，不是数。"
+      ],
+      "page": 19
+    },
+    {
+      "id": "c05",
+      "title": "无穷大的比较与参数确定",
+      "tags": [
+        "无穷大比较",
+        "最高阶",
+        "参数"
+      ],
+      "summary": "比较无穷大通常看增长速度：幂函数低于指数函数，指数函数低于阶乘。含参数的极限问题，可通过比较最高次项或令低阶项系数为零来确定参数。",
+      "formulas": [
+        {
+          "label": "增长速度",
+          "tex": "\\ln x\\ll x^p\\ll a^x\\ll x!\\quad(x\\to+\\infty)"
+        }
+      ],
+      "example": {
+        "stem": "已知 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^2-x+1}-ax-b\\right)=0$，求 $a,b$。",
+        "solution": "先有理化：$\\sqrt{x^2-x+1}-ax-b=\\frac{x^2-x+1-(ax+b)^2}{\\sqrt{x^2-x+1}+ax+b}$。要使极限为 $0$，分子最高次项必须抵消，得 $a=1$；再比较一次项，得 $b=-\\frac12$。"
+      },
+      "pitfalls": [
+        "参数问题先看最高次项是否抵消。",
+        "开方后取极限要注意 $x\\to+\\infty$ 时 $\\sqrt{x^2}=x$。"
+      ],
+      "page": 27
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "type": "multi",
+      "difficulty": 1,
+      "stem": "当 $x\\to0$ 时，下列变量是无穷小的是（多选）",
+      "options": [
+        [
+          "A",
+          "$x^2$"
+        ],
+        [
+          "B",
+          "$\\sin x$"
+        ],
+        [
+          "C",
+          "$\\frac1x$"
+        ],
+        [
+          "D",
+          "$x+1$"
+        ]
+      ],
+      "answer": [
+        "A",
+        "B"
+      ],
+      "explanation": "$x^2\\to0$，$\\sin x\\to0$，所以二者都是无穷小；$\\frac1x$ 的绝对值趋于无穷，不是无穷小；$x+1\\to1$，也不是无穷小。",
+      "page": 3,
+      "kp": "c01"
+    },
+    {
+      "id": "q002",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "有限个无穷小的和仍是无穷小。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "有限个极限为零的变量之和，极限仍为零。注意“有限个”不能换成“无限个”。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q003",
+      "type": "judge",
+      "difficulty": 1,
+      "stem": "有界函数与无穷小的乘积是无穷小。",
+      "options": [
+        [
+          "A",
+          "正确"
+        ],
+        [
+          "B",
+          "错误"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "若 $|f(x)|\\le M$，$\\alpha(x)\\to0$，则 $|f(x)\\alpha(x)|\\le M|\\alpha(x)|\\to0$，所以乘积仍是无穷小。命题正确。",
+      "page": 6,
+      "kp": "c01"
+    },
+    {
+      "id": "q004",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "当 $x\\to0$ 时，$x^2$ 与 $x$ 相比是（ ）",
+      "options": [
+        [
+          "A",
+          "高阶无穷小"
+        ],
+        [
+          "B",
+          "低阶无穷小"
+        ],
+        [
+          "C",
+          "同阶但不等价"
+        ],
+        [
+          "D",
+          "等价无穷小"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$\\lim_{x\\to0}\\frac{x^2}{x}=0$，所以 $x^2$ 是 $x$ 的高阶无穷小。",
+      "page": 12,
+      "kp": "c02"
+    },
+    {
+      "id": "q005",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "当 $x\\to0$ 时，$1-\\cos x\\sim$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "x^2/2",
+          "x²/2",
+          "\\frac{x^2}{2}",
+          "1/2x^2"
+        ]
+      ],
+      "explanation": "由 $1-\\cos x=2\\sin^2\\frac x2$ 及 $\\sin\\frac x2\\sim\\frac x2$，得 $1-\\cos x\\sim\\frac{x^2}{2}$。",
+      "page": 14,
+      "kp": "c03"
+    },
+    {
+      "id": "q006",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "当 $x\\to0$ 时，$\\ln(1+x)$ 的等价无穷小是（ ）",
+      "options": [
+        [
+          "A",
+          "$x$"
+        ],
+        [
+          "B",
+          "$x^2$"
+        ],
+        [
+          "C",
+          "$\\frac{x^2}{2}$"
+        ],
+        [
+          "D",
+          "$e^x$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$\\lim_{x\\to0}\\frac{\\ln(1+x)}{x}=1$，所以 $\\ln(1+x)\\sim x$。",
+      "page": 14,
+      "kp": "c03"
+    },
+    {
+      "id": "q007",
+      "type": "fill",
+      "difficulty": 1,
+      "stem": "$\\lim_{x\\to0}\\frac{e^x-1}{x}=$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "1"
+        ]
+      ],
+      "explanation": "利用等价无穷小 $e^x-1\\sim x$，极限为 $1$。",
+      "page": 14,
+      "kp": "c03"
+    },
+    {
+      "id": "q008",
+      "type": "judge",
+      "difficulty": 2,
+      "stem": "在加减运算中，可以随意用等价无穷小替换各个项。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "加减法中直接替换可能丢失高阶项。例如 $\\tan x-\\sin x$ 不能换成 $x-x=0$，实际它等价于 $\\frac{x^3}{2}$。",
+      "page": 18,
+      "kp": "c03"
+    },
+    {
+      "id": "q009",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "$\\lim_{x\\to0}\\frac{\\tan x-\\sin x}{x^3}=$（ ）",
+      "options": [
+        [
+          "A",
+          "$0$"
+        ],
+        [
+          "B",
+          "$\\frac12$"
+        ],
+        [
+          "C",
+          "$1$"
+        ],
+        [
+          "D",
+          "$2$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "$\\tan x-\\sin x=\\tan x(1-\\cos x)\\sim x\\cdot\\frac{x^2}{2}=\\frac{x^3}{2}$，所以极限为 $\\frac12$。",
+      "page": 17,
+      "kp": "c03"
+    },
+    {
+      "id": "q010",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "当 $x\\to\\infty$ 时，$\\frac1{x^2}$ 与 $\\frac1x$ 相比是（ ）",
+      "options": [
+        [
+          "A",
+          "高阶无穷小"
+        ],
+        [
+          "B",
+          "低阶无穷小"
+        ],
+        [
+          "C",
+          "等价无穷小"
+        ],
+        [
+          "D",
+          "同阶但不等价"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "$\\lim_{x\\to\\infty}\\frac{1/x^2}{1/x}=\\lim_{x\\to\\infty}\\frac1x=0$，所以 $\\frac1{x^2}$ 是 $\\frac1x$ 的高阶无穷小。",
+      "page": 13,
+      "kp": "c02"
+    },
+    {
+      "id": "q011",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "当 $x\\to+\\infty$ 时，下列无穷大中增长速度最快的是（ ）",
+      "options": [
+        [
+          "A",
+          "$\\ln x$"
+        ],
+        [
+          "B",
+          "$x^{10}$"
+        ],
+        [
+          "C",
+          "$2^x$"
+        ],
+        [
+          "D",
+          "$x!$"
+        ]
+      ],
+      "answer": [
+        "D"
+      ],
+      "explanation": "增长阶依次为 $\\ln x\\ll x^{10}\\ll2^x\\ll x!$，所以 $x!$ 增长最快。",
+      "page": 27,
+      "kp": "c05"
+    },
+    {
+      "id": "q012",
+      "type": "judge",
+      "difficulty": 2,
+      "stem": "无界函数一定是无穷大。",
+      "options": [
+        [
+          "A",
+          "对"
+        ],
+        [
+          "B",
+          "错"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "反例：$f(x)=x\\sin x$ 在 $x\\to\\infty$ 时无界，但不趋于无穷大，因为它会不断回到 $0$ 附近。",
+      "page": 20,
+      "kp": "c04"
+    },
+    {
+      "id": "q013",
+      "type": "single",
+      "difficulty": 1,
+      "stem": "在同一极限过程中，恒不为零的无穷小的倒数是（ ）",
+      "options": [
+        [
+          "A",
+          "无穷小"
+        ],
+        [
+          "B",
+          "无穷大"
+        ],
+        [
+          "C",
+          "有界量"
+        ],
+        [
+          "D",
+          "常数"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "这是无穷小与无穷大的倒数关系。",
+      "page": 23,
+      "kp": "c04"
+    },
+    {
+      "id": "q014",
+      "type": "fill",
+      "difficulty": 2,
+      "stem": "当 $x\\to0$ 时，$\\ln(1+2x)\\sim$（　）。",
+      "options": [],
+      "answer": [
+        [
+          "2x",
+          "2 x"
+        ]
+      ],
+      "explanation": "由 $\\ln(1+u)\\sim u$，令 $u=2x\\to0$，得 $\\ln(1+2x)\\sim2x$。",
+      "page": 14,
+      "kp": "c03"
+    },
+    {
+      "id": "q015",
+      "type": "single",
+      "difficulty": 2,
+      "stem": "当 $x\\to0$ 时，$(1+x)^a-1\\sim$（ ）",
+      "options": [
+        [
+          "A",
+          "$x$"
+        ],
+        [
+          "B",
+          "$ax$"
+        ],
+        [
+          "C",
+          "$a^2x$"
+        ],
+        [
+          "D",
+          "$\\frac{a}{x}$"
+        ]
+      ],
+      "answer": [
+        "B"
+      ],
+      "explanation": "这是常用等价无穷小：$(1+x)^a-1\\sim ax$。",
+      "page": 14,
+      "kp": "c03"
+    },
+    {
+      "id": "q016",
+      "type": "single",
+      "difficulty": 3,
+      "stem": "已知 $\\lim_{x\\to+\\infty}\\left(\\sqrt{x^2-x+1}-ax-b\\right)=0$，则（ ）",
+      "options": [
+        [
+          "A",
+          "$a=1,\\ b=-\\frac12$"
+        ],
+        [
+          "B",
+          "$a=1,\\ b=\\frac12$"
+        ],
+        [
+          "C",
+          "$a=-1,\\ b=\\frac12$"
+        ],
+        [
+          "D",
+          "$a=0,\\ b=1$"
+        ]
+      ],
+      "answer": [
+        "A"
+      ],
+      "explanation": "有理化后分子为 $x^2-x+1-(ax+b)^2$。要与分母同阶且极限为 $0$，先令 $x^2$ 项抵消得 $a=1$；再令 $x$ 项抵消：$-1-2b=0$，得 $b=-\\frac12$。",
+      "page": 27,
+      "kp": "c05"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "f01",
+      "group": "无穷小与无穷大",
+      "name": "无穷小",
+      "tex": "\\lim_{x\\to x_0}\\alpha(x)=0",
+      "note": "无穷小是变量，不是很小的常数",
+      "page": 3
+    },
+    {
+      "id": "f02",
+      "group": "无穷小与无穷大",
+      "name": "等价无穷小（基本）",
+      "tex": "\\sin x\\sim x,\\ \\tan x\\sim x,\\ \\arcsin x\\sim x,\\ \\arctan x\\sim x",
+      "note": "$x\\to0$",
+      "page": 14
+    },
+    {
+      "id": "f03",
+      "group": "无穷小与无穷大",
+      "name": "等价无穷小（常用）",
+      "tex": "1-\\cos x\\sim\\frac{x^2}{2},\\ \\ln(1+x)\\sim x,\\ e^x-1\\sim x",
+      "note": "$x\\to0$",
+      "page": 14
+    },
+    {
+      "id": "f04",
+      "group": "无穷小与无穷大",
+      "name": "等价无穷小（幂型）",
+      "tex": "(1+x)^a-1\\sim ax,\\quad a^x-1\\sim x\\ln a",
+      "note": "$x\\to0$，$a>0$",
+      "page": 14
+    },
+    {
+      "id": "f05",
+      "group": "无穷小与无穷大",
+      "name": "无穷小比较",
+      "tex": "\\lim\\frac{\\alpha}{\\beta}=0\\ (\\text{高阶}),\\quad =c\\ne0\\ (\\text{同阶}),\\quad =1\\ (\\text{等价})",
+      "note": "同一极限过程",
+      "page": 12
+    },
+    {
+      "id": "f06",
+      "group": "无穷小与无穷大",
+      "name": "无穷大与无穷小",
+      "tex": "f(x)\\to\\infty\\iff\\frac1{f(x)}\\to0",
+      "note": "要求 $f(x)\\ne0$",
+      "page": 23
+    },
+    {
+      "id": "f07",
+      "group": "无穷小与无穷大",
+      "name": "增长速度",
+      "tex": "\\ln x\\ll x^p\\ll a^x\\ll x!\\quad(x\\to+\\infty)",
+      "note": "$p>0,\\ a>1$",
+      "page": 27
+    }
+  ]
+}
