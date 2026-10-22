@@ -81,7 +81,7 @@
       ["home", "#/home", "首页", "home"], ["chapters", "#/chapters", "章节复习", "book"],
       ["quiz", "#/quiz", "刷题练习", "quiz"], ["wrong", "#/wrong", "错题本", "wrong"],
       ["formulas", "#/formulas", "公式速查", "formula"], ["stats", "#/stats", "学习统计", "stats"],
-      ["library", "#/library", "课件库", "library"]
+      ["library", "#/library", "课件库", "library"], ["sync", "#/sync", "云同步", "refresh"]
     ];
     return '<div class="app-shell"><aside class="sidebar">' +
       '<div class="brand"><div class="brand-mark">∫</div><div><div class="brand-title">' + esc(D.site.title) + '</div><div class="brand-sub">CALCULUS REVIEW</div></div></div>' +
@@ -91,7 +91,8 @@
       '<main class="main"><header class="topbar"><div class="topbar-title">' + esc(title) + '</div><button class="search-trigger" data-action="open-search">' + UI.icon("search") + '<span>搜索知识卡、公式</span><span class="kbd">Ctrl K</span></button></header>' +
       '<div class="view">' + content + '</div><div class="footer">本地复习站 · ' + decks.length + " 份课件 · " + cards.length + " 张知识卡 · " + questions.length + " 道题 · " + formulas.length + " 条公式</div></main>" +
       '<nav class="bottom-nav">' + [["home", "#/home", "首页", "home"], ["chapters", "#/chapters", "复习", "book"], ["quiz", "#/quiz", "刷题", "quiz"], ["wrong", "#/wrong", "错题", "wrong"], ["more", "#/more", "更多", "spark"]].map(function (n) {
-        return '<a class="' + (active === n[0] ? "active" : "") + '" href="' + n[1] + '">' + UI.icon(n[3]) + "<span>" + n[2] + "</span></a>";
+        var key = active === "sync" ? "more" : active;
+        return '<a class="' + (key === n[0] ? "active" : "") + '" href="' + n[1] + '">' + UI.icon(n[3]) + "<span>" + n[2] + "</span></a>";
       }).join("") + "</nav></div>";
   }
 
@@ -708,7 +709,7 @@
     } else if (path === "/exam/result") {
       content = examResultView(); active = "quiz"; title = "测验结果";
     } else if (path === "/sync") {
-      content = syncView(); active = "more"; title = "云同步";
+      content = syncView(); active = "sync"; title = "云同步";
     } else if (path === "/more") {
       content = moreView(); active = "more"; title = "更多";
     } else {
