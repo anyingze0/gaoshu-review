@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-21T11:30:23.590Z",
+  "updatedAt": "2026-10-22T02:16:22.381Z",
   "decks": [
     {
       "id": "ch1-1",
@@ -10,12 +10,12 @@
       "order": 1.1,
       "file": "courseware/decks/ch1-1-functions.pdf",
       "pages": 42,
-      "sha256": "28248645B927833D5958CF4591CDED541500416CB8078BA6B450BD50026E5DC1",
+      "sha256": "27430C94820582B894395C3E5F493366EA0E0D9404A6CC92654AF35A0B3527A1",
       "status": "ready",
       "contentFile": "content/decks/ch1-1.json",
       "sourceName": "1.1函数.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-2",
@@ -25,12 +25,12 @@
       "order": 1.2,
       "file": "courseware/decks/ch1-2-sequence-limits.pdf",
       "pages": 43,
-      "sha256": "9DD2069593BBE0EE11114C18DB1ACE7F33335A51718F75ED25B083F6FD8920D3",
+      "sha256": "20084EE811CCAC846EAAB9DAF309400DA2D24A34AD8E848FCB49627338C3544D",
       "status": "ready",
       "contentFile": "content/decks/ch1-2.json",
       "sourceName": "1.2数列极限（2.5节）.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-3",
@@ -40,12 +40,12 @@
       "order": 1.3,
       "file": "courseware/decks/ch1-3-function-limits.pdf",
       "pages": 53,
-      "sha256": "A1FBA43C4F29EF75B7B30B72CF0B3FE08802FE29EDAACD49CAFC99BD6576F652",
+      "sha256": "39E83C644D248ADCF951D3D2F50D014C3F121FA9393EADF9262CFDBC66A6737F",
       "status": "ready",
       "contentFile": "content/decks/ch1-3.json",
       "sourceName": "1.3函数极限.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-4",
@@ -55,12 +55,12 @@
       "order": 1.4,
       "file": "courseware/decks/ch1-4-infinitesimal.pdf",
       "pages": 28,
-      "sha256": "35024B37B537F4C7A9AD97A6EE36BDFE612D5A7FF67AA3F0021560DDE8BD9F60",
+      "sha256": "2F8520FE9336401A27612B515D86F5F60120E8AC8A14C08A09DFDBE1953E8A0C",
       "status": "ready",
       "contentFile": "content/decks/ch1-4.json",
       "sourceName": "1.4无穷小与无穷大.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-5",
@@ -70,12 +70,12 @@
       "order": 1.5,
       "file": "courseware/decks/ch1-5-continuity.pdf",
       "pages": 34,
-      "sha256": "BBD8BB62F50E8B69E2F6A2D97EB878789A0BBBD4B8C30AE528E7141BD7EB1426",
+      "sha256": "DF35210CAA528BD9BD52B1904FDDA9CCC5A2400A726F3293392ADF208730C8EB",
       "status": "ready",
       "contentFile": "content/decks/ch1-5.json",
       "sourceName": "1.5函数的连续性.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-6",
@@ -85,12 +85,12 @@
       "order": 1.6,
       "file": "courseware/decks/ch1-6-closed-interval.pdf",
       "pages": 15,
-      "sha256": "1091FB8528DA78CF3E0A697D47AE01F24EA8ACD16EF559EF8D6C488B6AEC36DA",
+      "sha256": "0731AD726439AD95BF57846FC2FD47D4CF8F9180B54659489A4D17020C5831AB",
       "status": "ready",
       "contentFile": "content/decks/ch1-6.json",
       "sourceName": "1.6闭区间上连续函数的性质.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch1-0",
@@ -100,12 +100,12 @@
       "order": 1.7,
       "file": "courseware/decks/ch1-0-exercises.pdf",
       "pages": 17,
-      "sha256": "B24C253E7DBC91F009E8374B1B75BE152400E553CDEC56762AD7B77016700C0E",
+      "sha256": "899113DF60A873CF3A397178A39E2C1C9D0725F76753DFF9DC26E5C239159257",
       "status": "ready",
       "contentFile": "content/decks/ch1-0.json",
       "sourceName": "1-习题课.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch2-1",
@@ -115,12 +115,12 @@
       "order": 2.1,
       "file": "courseware/decks/ch2-1-derivative-concept.pdf",
       "pages": 33,
-      "sha256": "5C0C913946BD3247E25D6FECA46C24C84462D48DF83878FD138E11FD049982A2",
+      "sha256": "65A703A82587E28011F0998AA7087EA6D8BA5B88BC02472A1005F481D563A39B",
       "status": "ready",
       "contentFile": "content/decks/ch2-1.json",
       "sourceName": "2.1导数的概念.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch2-2",
@@ -130,12 +130,12 @@
       "order": 2.2,
       "file": "courseware/decks/ch2-2-derivative-computation.pdf",
       "pages": 25,
-      "sha256": "E7698EF9870061F0B14B7A41C24FDCE2E100D3348EBF1C7EFB93919DAF0DDEAF",
+      "sha256": "A22CC2F358F69CD8D5466776C90FCFDDE02E8D3EDAA5CAB82B3898EC4C8CC13B",
       "status": "ready",
       "contentFile": "content/decks/ch2-2.json",
       "sourceName": "2.2导数的计算.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch2-3",
@@ -145,12 +145,12 @@
       "order": 2.3,
       "file": "courseware/decks/ch2-3-higher-order.pdf",
       "pages": 22,
-      "sha256": "8C2C88EC12CA1AD8A72647560DF354B57E2885FFD439BEFBDA3E27DB41EC57C6",
+      "sha256": "D863AC5EF55311AB11B67F0C942279CE6B090EFB095376CA71AC4D04630646F7",
       "status": "ready",
       "contentFile": "content/decks/ch2-3.json",
       "sourceName": "2.3高阶导数.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     },
     {
       "id": "ch2-4",
@@ -160,12 +160,12 @@
       "order": 2.4,
       "file": "courseware/decks/ch2-4-special-derivatives.pdf",
       "pages": 13,
-      "sha256": "1914C1244B10CC4A34694F1E0BCC7046932AFDFF60DAE4E2E9DD040369C46F2D",
+      "sha256": "82049F7E5CABB4D6A0E5F98DB9007D5D1F8EC99FBB6B2E597C1789BFFBB2179E",
       "status": "ready",
       "contentFile": "content/decks/ch2-4.json",
       "sourceName": "2.4几类特殊类型函数的求导方法.pdf",
       "addedAt": "2026-10-21T11:30:23.590Z",
-      "updatedAt": "2026-10-21T11:30:23.590Z"
+      "updatedAt": "2026-10-22T02:16:22.381Z"
     }
   ]
 }

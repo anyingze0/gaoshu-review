@@ -3,6 +3,7 @@ backups/*
 reports/*
 courseware/inbox/*
 courseware/unclassified/*
+tmp/
 
 !backups/.gitkeep
 !reports/.gitkeep
