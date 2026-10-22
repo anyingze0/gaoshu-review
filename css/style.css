@@ -352,3 +352,9 @@ table.data tr:hover td{background:#fafcff}
   .formula-card,.card{box-shadow:none;break-inside:avoid}
   .formula-grid{grid-template-columns:1fr 1fr}
 }
+/* sync */
+.form-row{display:flex;flex-direction:column;gap:7px;margin-top:14px}
+.form-row label{font-size:12px;font-weight:700;color:var(--ink-2)}
+.text-input{width:100%;border:1px solid var(--line-strong);border-radius:10px;padding:11px 13px;font-size:14px;background:#fff;color:var(--ink);line-height:1.5}
+.text-input:focus{outline:2px solid #bcd6ef;border-color:var(--primary)}
+textarea.text-input{resize:vertical;font-family:Consolas,"SFMono-Regular",monospace;font-size:12px}

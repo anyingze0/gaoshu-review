@@ -414,7 +414,7 @@
       if (!sections[q.section]) sections[q.section] = { total: 0, chapter: q.chapter, title: q.deckTitle };
       sections[q.section].total += 1;
     });
-    return '<div class="page-head"><div><div class="eyebrow">PROGRESS</div><h1 class="page-title">学习统计</h1><p class="page-sub">数据保存在当前浏览器。换设备或清除浏览器数据后不会同步。</p></div><button class="btn btn-danger" data-action="reset-data">重置全部数据</button></div>' +
+    return '<div class="page-head"><div><div class="eyebrow">PROGRESS</div><h1 class="page-title">学习统计</h1><p class="page-sub">' + (GistSync.isConfigured() ? "云同步已开启，多台设备的答题与错题会自动合并。" : "数据保存在当前浏览器；开启云同步后可在多台设备间合并进度。") + '</p></div><button class="btn btn-danger" data-action="reset-data">重置全部数据</button></div>' +
       '<div class="stat-grid"><div class="stat-box"><span>累计答题</span><strong>' + S.stats.answered + '</strong></div><div class="stat-box"><span>累计正确率</span><strong>' + acc + '%</strong></div><div class="stat-box"><span>知识卡掌握</span><strong>' + mastered + "/" + cards.length + '</strong></div><div class="stat-box"><span>错题待攻克</span><strong>' + wrongs + "</strong></div></div>" +
       '<div class="home-split"><div class="card card-pad"><div class="section-title" style="margin-top:0">分章正确率</div>' + chapterRows.map(function (r) {
         return '<div class="bar-row"><span>' + esc(r.ch.label) + '</span><span class="bar-track"><i style="width:' + pct(r.correct, r.answered) + '%"></i></span><b>' + pct(r.correct, r.answered) + "%</b></div>";
@@ -427,7 +427,8 @@
       }).join("") + "</tbody></table></div></div>" +
       '<div class="card card-pad" style="margin-top:16px"><div class="section-title" style="margin-top:0">最近练习</div>' + (S.history.length ? '<div class="table-wrap"><table class="data"><thead><tr><th>时间</th><th>模式</th><th>得分</th><th>正确率</th></tr></thead><tbody>' + S.history.slice(0, 8).map(function (h) {
         return "<tr><td>" + UI.fmtDate(h.at) + "</td><td>" + (h.mode === "wrong" ? "错题重练" : h.mode === "exam" ? "综合测验" : "章节练习") + "</td><td>" + h.correct + "/" + h.total + "</td><td>" + pct(h.correct, h.total) + "%</td></tr>";
-      }).join("") + "</tbody></table></div>" : '<div class="empty" style="padding:26px"><p>还没有练习记录。</p></div>') + "</div>";
+      }).join("") + "</tbody></table></div>" : '<div class="empty" style="padding:26px"><p>还没有练习记录。</p></div>') + "</div>" +
+      '<div class="card card-pad" style="margin-top:16px"><div class="section-title" style="margin-top:0">云同步</div><div class="small muted">' + syncStatusLine() + '</div><div style="margin-top:10px"><a class="btn btn-soft btn-sm" href="#/sync">' + (GistSync.isConfigured() ? "管理同步" : "开启云同步") + '</a></div></div>';
   }
 
   function libraryView() {
@@ -450,7 +451,7 @@
       '<div class="step">再次运行 <code>更新网站.cmd</code>，构建并校验通过后，新知识卡和题目就会出现在网站里。出错可用 <code>恢复上一版.cmd</code> 回滚。</div></div>' +
       '<div><div class="prompt-box" id="prompt-box">请阅读 courseware/decks/&lt;课件id&gt;.pdf，按 content/README.md 的规范生成 content/decks/&lt;课件id&gt;.json：6–10 张知识卡、15–25 道题，所有卡片和题目标注真实页码，公式使用 KaTeX，解析写出推理过程。完成后运行 node tools/build.mjs 并修复所有校验错误。</div><button class="btn btn-soft btn-sm" style="margin-top:9px" data-action="copy-prompt">复制通用提示词</button></div></div></div>' +
       (summary ? '<div class="card card-pad" style="margin-top:16px"><div class="section-title" style="margin-top:0">上次导入</div><div class="small muted">' + UI.fmtDate(summary.at) + " · 新增 " + (summary.added || []).length + " · 修订 " + (summary.updated || []).length + " · 未归类 " + (summary.unclassified || []).length + "</div>" + ((summary.nextSteps || []).length ? '<ul style="margin-top:9px;padding-left:18px;font-size:12px;color:var(--ink-2)">' + summary.nextSteps.map(function (x) { return "<li>" + ft(x) + "</li>"; }).join("") + "</ul>" : "") + "</div>" : "") +
-      '<div class="small muted" style="margin-top:16px">数据版本：' + UI.fmtDate(D.version) + " · 站点完全离线运行，不读取网络资源。</div>";
+      '<div class="small muted" style="margin-top:16px">数据版本：' + UI.fmtDate(D.version) + " · 未开启云同步时完全离线运行，不读取网络资源。</div>";
   }  function examIntroView() {
     var r = S.exam && S.exam.result;
     var examN = (D.site && D.site.examCount) || 20;
@@ -549,11 +550,47 @@
       '<div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:22px"><button class="btn btn-primary" data-action="start-exam">' + UI.icon("refresh") + '再测一次</button><a class="btn btn-ghost" href="#/home">回首页</a></div></div>';
   }
 
+  function syncStatusLine() {
+    var st = GistSync.status();
+    if (!st.configured) return "未开启，学习数据只保存在当前浏览器。";
+    if (st.lastError) return "同步异常：" + st.lastError;
+    return "已开启，最近同步 " + (st.lastSyncAt ? UI.fmtDate(st.lastSyncAt) : "—") + "，共 " + st.deviceCount + " 台设备。";
+  }
+
+  function syncView() {
+    var st = GistSync.status();
+    var head = '<div class="page-head"><div><div class="eyebrow">SYNC</div><h1 class="page-title">云同步</h1><p class="page-sub">用你自己的 GitHub 私有 Gist，让多台设备共用一份学习进度。</p></div></div>';
+    if (!st.configured) {
+      return head +
+        '<div class="banner banner-blue">' + UI.icon("spark") + '<div>未开启时网站完全离线，数据只存本机；开启后会在打开页面和答完题时自动同步。所有设备的数据会合并，不会互相覆盖。</div></div>' +
+        '<div class="card card-pad"><div class="section-title" style="margin-top:0">开启步骤</div><div class="steps">' +
+        '<div class="step">打开 <a href="https://github.com/settings/tokens/new?scopes=gist&description=%E9%AB%98%E6%95%B0%E5%A4%8D%E4%B9%A0%E7%AB%99" target="_blank" rel="noreferrer" style="color:var(--primary)">GitHub Token 页面</a>，登录后确认勾选了 <code>gist</code> 权限。</div>' +
+        '<div class="step">点击 <code>Generate new token (classic)</code> 生成令牌，复制以 <code>ghp_</code> 开头的字符串。</div>' +
+        '<div class="step">把令牌粘贴到下面，点击“创建并启用”。网站会新建一个只有你能访问的私有 Gist。</div>' +
+        '</div>' +
+        '<div class="form-row"><label for="sync-token">GitHub 令牌（classic，仅 gist 权限）</label><input class="text-input" id="sync-token" type="password" autocomplete="off" spellcheck="false" placeholder="ghp_..."></div>' +
+        '<div style="margin-top:14px"><button class="btn btn-primary" data-action="sync-create">创建并启用</button></div>' +
+        '<p class="small muted" style="margin-top:12px">令牌只保存在本机浏览器，只发送给 api.github.com，不会写进进度数据或 Gist。</p></div>' +
+        '<div class="card card-pad" style="margin-top:16px"><div class="section-title" style="margin-top:0">已有同步？</div>' +
+        '<p class="small muted">在已开启同步的设备上打开“云同步”，点击“复制配置串”，把复制到的文本粘贴到这里即可接入同一份进度。</p>' +
+        '<div class="form-row"><label for="sync-config">同步配置串</label><textarea class="text-input" id="sync-config" rows="3" placeholder="粘贴配置串"></textarea></div>' +
+        '<div style="margin-top:12px"><button class="btn btn-soft" data-action="sync-import">导入并同步</button></div></div>';
+    }
+    return head +
+      '<div class="card card-pad"><div style="display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap"><div><span class="badge badge-green">已开启</span> <strong style="margin-left:6px">学习进度会自动同步</strong><div class="small muted" style="margin-top:5px">' + syncStatusLine() + '</div></div><button class="btn btn-primary" data-action="sync-now"' + (st.busy ? " disabled" : "") + '>' + UI.icon("refresh") + (st.busy ? "同步中…" : "立即同步") + '</button></div>' +
+      (st.lastError ? '<div class="banner banner-red" style="margin:14px 0 0">' + UI.icon("x") + '<div>' + esc(st.lastError) + '</div></div>' : "") +
+      '<div class="grid grid-3" style="margin-top:16px"><div class="stat-box"><span>最近同步</span><strong style="font-size:14px">' + (st.lastSyncAt ? UI.fmtDate(st.lastSyncAt) : "等待首次同步") + '</strong></div><div class="stat-box"><span>已接入设备</span><strong>' + st.deviceCount + '</strong></div><div class="stat-box"><span>存储位置</span><strong style="font-size:13px"><a href="https://gist.github.com/' + esc(st.gistId) + '" target="_blank" rel="noreferrer" style="color:var(--primary)">私有 Gist</a></strong></div></div></div>' +
+      '<div class="card card-pad" style="margin-top:16px"><div class="section-title" style="margin-top:0">在另一台设备上接入</div>' +
+      '<p class="small muted">复制下面的配置串，在另一台设备打开本站的“更多 → 云同步”，粘贴到“已有同步”里。配置串含有令牌，请只发给自己。</p>' +
+      '<div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:12px"><button class="btn btn-soft" data-action="sync-copy">复制配置串</button><button class="btn btn-ghost" data-action="sync-disconnect">断开同步</button></div></div>' +
+      '<p class="small muted" style="margin-top:16px">Gist 是私有（不公开列出）但不是端到端加密，只存放答题统计与错题，不包含个人信息。令牌失效后重新生成并在此粘贴即可。</p>';
+  }
+
   function moreView() {
     var examN = (D.site && D.site.examCount) || 20;
     var examMin = (D.site && D.site.examMinutes) || 30;
     return '<div class="page-head"><div><div class="eyebrow">MORE</div><h1 class="page-title">更多</h1><p class="page-sub">公式、统计、课件库与导入说明。</p></div></div><div class="more-list">' +
-      [["#/formulas", "formula", "公式速查", formulas.length + " 条公式"], ["#/stats", "stats", "学习统计", "正确率、分章表现与最近练习"], ["#/library", "library", "课件库", decks.length + " 份课件与导入说明"], ["#/exam", "clock", "综合测验", examN + " 题 / " + examMin + " 分钟"]].map(function (x) {
+      [["#/sync", "refresh", "云同步", syncStatusLine()], ["#/formulas", "formula", "公式速查", formulas.length + " 条公式"], ["#/stats", "stats", "学习统计", "正确率、分章表现与最近练习"], ["#/library", "library", "课件库", decks.length + " 份课件与导入说明"], ["#/exam", "clock", "综合测验", examN + " 题 / " + examMin + " 分钟"]].map(function (x) {
         return '<a class="more-link" href="' + x[0] + '"><span class="quick-icon">' + UI.icon(x[1]) + "</span><span><strong>" + x[2] + "</strong><span class=\"small muted\" style=\"display:block\">" + x[3] + "</span></span>" + UI.icon("arrowRight") + "</a>";
       }).join("") + "</div>";
   }
@@ -670,6 +707,8 @@
       content = examSessionView(); active = "quiz"; title = "测验进行中";
     } else if (path === "/exam/result") {
       content = examResultView(); active = "quiz"; title = "测验结果";
+    } else if (path === "/sync") {
+      content = syncView(); active = "more"; title = "云同步";
     } else if (path === "/more") {
       content = moreView(); active = "more"; title = "更多";
     } else {
@@ -787,6 +826,56 @@
 
     if (action === "open-search") { e.preventDefault(); openSearch(); return; }
     if (action === "close-search") { closeSearch(); return; }
+    if (action === "sync-create") {
+      var tokenInput = document.getElementById("sync-token");
+      var token = tokenInput ? tokenInput.value : "";
+      if (!token.trim()) { UI.toast("请先粘贴 GitHub 令牌"); return; }
+      el.disabled = true; el.textContent = "正在创建…";
+      GistSync.createGist(token).then(function () {
+        UI.toast("云同步已开启");
+        render();
+      }).catch(function (err) {
+        el.disabled = false; el.textContent = "创建并启用";
+        UI.toast(err.message || "创建失败");
+      });
+      return;
+    }
+    if (action === "sync-import") {
+      var configInput = document.getElementById("sync-config");
+      if (!configInput || !configInput.value.trim()) { UI.toast("请先粘贴同步配置串"); return; }
+      el.disabled = true; el.textContent = "正在导入…";
+      GistSync.importConfig(configInput.value).then(function () {
+        UI.toast("已接入云同步");
+        render();
+      }).catch(function (err) {
+        el.disabled = false; el.textContent = "导入并同步";
+        UI.toast(err.message || "导入失败");
+      });
+      return;
+    }
+    if (action === "sync-now") {
+      el.disabled = true; el.textContent = "同步中…";
+      GistSync.syncNow().then(function (ok) {
+        render();
+        if (ok) UI.toast("同步完成");
+      }).catch(function (err) {
+        render();
+        UI.toast(err.message || "同步失败");
+      });
+      return;
+    }
+    if (action === "sync-copy") {
+      copyText(GistSync.packConfig(), "配置串已复制，可在另一台设备导入");
+      return;
+    }
+    if (action === "sync-disconnect") {
+      if (confirm("断开后本机不再自动同步，云端 Gist 与已上传的进度会保留。确定断开吗？")) {
+        GistSync.disconnect();
+        render();
+        UI.toast("云同步已断开");
+      }
+      return;
+    }
     if (action === "goto-formula") {
       e.preventDefault();
       pendingFormulaQuery = el.getAttribute("data-name") || "";
@@ -840,13 +929,13 @@
     if (action === "wrong-filter") { currentQuery = el.getAttribute("data-value") || ""; render(); return; }
     if (action === "remove-wrong") {
       var rid = el.getAttribute("data-id");
-      if (S.wrong[rid]) { S.wrong[rid].removed = true; Store.save(); render(); UI.toast("已移出错题本"); }
+      if (S.wrong[rid]) { Store.removeWrong(rid); render(); UI.toast("已移出错题本"); }
       return;
     }
     if (action === "clear-wrong") {
       if (!Object.keys(S.wrong).length) { UI.toast("错题本已经是空的"); return; }
       if (confirm("确定清空全部错题记录吗？已掌握的知识卡与答题统计不会受影响。")) {
-        S.wrong = {}; Store.save(); render(); UI.toast("错题本已清空");
+        Store.clearWrong(); render(); UI.toast("错题本已清空");
       }
       return;
     }
@@ -977,6 +1066,12 @@
     }
   });
 
+  window.addEventListener("store:sync", function () {
+    S = Store.state;
+    if (location.hash === "#/quiz/session" || location.hash === "#/exam/session") return;
+    render();
+  });
+  window.addEventListener("sync:status", function () { if (location.hash === "#/sync") render(); });
   window.addEventListener("hashchange", render);
 
   if (!location.hash) location.hash = "#/home";

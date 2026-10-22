@@ -1,6 +1,6 @@
 /* 由 tools/build.mjs 自动生成，请勿手改。源数据在 manifest.json 与 content/ 中。 */
 var SITE_DATA = {
-  "version": "2026-10-22T02:16:22.713Z",
+  "version": "2026-10-22T03:08:24.440Z",
   "site": {
     "title": "高等数学复习站",
     "subtitle": "第一章 函数与极限 · 第二章 一元函数的导数与微分",
